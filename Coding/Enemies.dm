@@ -16,98 +16,103 @@
 			_message(world, "[m] entered")
 			if(istype(m,/mob/player))
 
-				src.owner.foundTarget(m)*/
+ 				src.owner.foundTarget(m)*/
 
 
-
-
-
-area
+turf
 	enemyarea
 		icon='Void.dmi'
+		density=0
+		alpha=100
 		layer=5
-		alpha = 100
-		var
+		layer=TURF_LAYER
 
-			tmp/mob/Enemy/owner = null
-		New(location, mob/shooter) // store your location / src who is shooting
-			if(!ismob(shooter)) return
+		var
+			mob/Enemy/owner = null
+		New(location, mob/shooter)
+
 			if(shooter)
-				src.owner = shooter // claim shooter as src.owner
-			..(/*Phat T*/)
+
+				src.owner = shooter
+
+
+
 
 		Entered(mob/m)
 			if(istype(m,/mob/player/))
 				var/mob/player/pl = m
 				if(src.owner)
-					_message(world, "[pl] entered [src.owner.claimedarea]")
-					_message(world, "[pl] entered [src.owner.name]")
-					src.owner.foundTarget(pl)  // src.owner start to find target
+					for(var/mob/Enemy/tr in src.owner.ContainMobs)
+						tr.foundTarget(pl)
+					//src.owner.foundTarget(pl)
 		Exited(mob/m)
 			if(istype(m,/mob/player/))
-				var/mob/player/pl = m
+
 				if(src.owner)
-					_message(world, "[pl] exited [src.owner.name]") //You don't need src. tho but, redundancy i guess
-					src.owner.target=null
+					for(var/mob/Enemy/tr in src.owner.ContainMobs)
+
+						tr.target=null
+
+
+
+
+
+mob
+	verb
+		Test()
+			var/turf/T
+			for(var/mob/Enemy/m in world)
+				for(T in range(3, m))
+					if(T)
+						new/turf/enemyarea(T,m)
+
+						m.ContainMobs+=m
+
+
 mob
 	Bosses
 	Enemy
-		New()
-			..()
+		New(/*Phat T*/)
+			..(/*Phat T*/)
 
 			maxhp=hp
 			src.home_loc = src.loc
 		var/speactext
-		var/claimedarea
+		var/list/ContainMobs=list()
+
 		icon='Enemies.dmi'
 		Earthregion
-			Brusolini
-				icon_state="enemy4"
-				bounds="12,6 to 36,39"
-				step_size=4
-				New()
-					..()
-					var/turf/T // wanna show you my prob :D
-					var/area/enemyarea/L  //this is already a new one I want to claim each mob heir area
-					for(T in range(3, src)) // in range(3)
-						L= new/area/enemyarea(T,src) // put are on 3x3 map and claim src as src.owner
-						L.name = src.name
-						src.claimedarea = L // this is just something new i wanted to try
-
-
-
-
-			Brusolini2
-				icon_state="enemy5"
-				bounds="12,6 to 36,39"
-				step_size=4
-				New()
-					..()
-					var/turf/T // wanna show you my prob :D
-					var/area/enemyarea/L  //this is already a new one I want to claim each mob heir area
-					for(T in range(3, src))
-						L= new/area/enemyarea(T,src)
-						src.claimedarea = L
-
-
 			Brusolini3
 				icon_state="enemy11"
 				bounds="12,6 to 36,39"
 				step_size=4
 				New()
-					..()
-					var/turf/T // wanna show you my prob :D
-					var/area/enemyarea/L  //This is a bit wierd. Cause it creates a new area, and the settings should only affect the areas created, for that spe
-					//specific object(/mob) but still, all areas is attached to the latest compiled /Brusolini, and i can't see why that is.
-					// it is weird as fuck
+					var/turf/T
+
 					for(T in range(3, src))
-						L= new/area/enemyarea(T,src)
-						src.claimedarea = L
+
+						if(T)
+							if(!T.density)
+								new/turf/enemyarea(T,src)
+					for(var/mob/Enemy/c in range(3,src))
+
+						src.ContainMobs+=c
 
 
-//this is actually a bit wierd.
-//however, claimedarea shouldn't that be a list?
-//It is a bit hard to look at the code, figure out what it means and then figure out what the error is :o
+			Brusolini5
+				icon_state="enemy3"
+				bounds="12,6 to 36,39"
+				step_size=4
+				New()
+					var/turf/T
 
+					for(T in range(3, src))
 
+						if(T)
+							if(!T.density)
+								new/turf/enemyarea(T,src)
+
+					for(var/mob/Enemy/c in range(3,src))
+
+						src.ContainMobs+=c
 
