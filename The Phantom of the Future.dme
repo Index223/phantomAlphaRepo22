@@ -1,0 +1,66 @@
+// DM Environment file for One Strike.dme.
+// All manual changes should be made outside the BEGIN_ and END_ blocks.
+// New source code should be placed in .dm files: choose File/New --> Code File.
+
+// BEGIN_INTERNALS
+// END_INTERNALS
+
+// BEGIN_FILE_DIR
+#define FILE_DIR .
+#define FILE_DIR "Character"
+#define FILE_DIR "Character/CharacterCreatingIcons"
+#define FILE_DIR "Character/CharacterIcons"
+#define FILE_DIR "Character/CharacterIcons/Armor"
+#define FILE_DIR "Character/CharacterIcons/BlackSprites"
+#define FILE_DIR "Character/CharacterIcons/EvolutionsIcons"
+#define FILE_DIR "Character/CharacterIcons/Gloves"
+#define FILE_DIR "Character/CharacterIcons/Shields"
+#define FILE_DIR "Character/CharacterIcons/Staff"
+#define FILE_DIR "Character/CharacterIcons/Swords"
+#define FILE_DIR "Character/CharacterIcons/White Sprites"
+#define FILE_DIR "InterfaceIcons"
+#define FILE_DIR "Mapping"
+#define FILE_DIR "OtherIcons"
+// END_FILE_DIR
+
+// BEGIN_PREFERENCES
+#define DEBUG
+// END_PREFERENCES
+
+// BEGIN_INCLUDE
+#include "Character\Attributes.dm"
+#include "Character\Character vars.dm"
+#include "Character\Chat.dm"
+#include "Character\Clothes.dm"
+#include "Character\Damage.dm"
+#include "Character\Hotkeys.dm"
+#include "Character\Hp.dm"
+#include "Character\Hud.dm"
+#include "Character\Inventory.dm"
+#include "Character\Jump.dm"
+#include "Character\LevelUp.dm"
+#include "Character\Login.dm"
+#include "Character\Movement.dm"
+#include "Character\Save.dm"
+#include "Character\TechEffects.dm"
+#include "Character\Techniques.dm"
+#include "Character\TechTree.dm"
+#include "Character\Verbs.dm"
+#include "Character\CharacterCreatingIcons\Character Selection.dm"
+#include "Character\CharacterCreatingIcons\CharacterCreating Setup.dm"
+#include "Coding\Enemies.dm"
+#include "Coding\Enemy AI.dm"
+#include "Coding\NPC.dm"
+#include "Coding\Obj.dm"
+#include "Coding\Party.dm"
+#include "Coding\Proc.dm"
+#include "Coding\QuestObj.dm"
+#include "Coding\Speech bubble font.dm"
+#include "Coding\Speech bubble.dm"
+#include "Coding\The Phantom of the Future.dm"
+#include "InterfaceIcons\Interface.dmf"
+#include "Mapping\Turfs.dm"
+#include "Mapping\Warps.dm"
+#include "Mapping\Map.dmm"
+// END_INCLUDE
+

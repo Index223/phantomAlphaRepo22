@@ -1,0 +1,972 @@
+macro "macro"
+	elem 
+		name = "Space"
+		command = "Jump"
+	elem 
+		name = "West"
+		command = "MoveKey 8 1"
+	elem 
+		name = "West+UP"
+		command = "MoveKey 8 0"
+	elem 
+		name = "North"
+		command = "MoveKey 1 1"
+	elem 
+		name = "North+UP"
+		command = "MoveKey 1 0"
+	elem 
+		name = "East"
+		command = "MoveKey 4 1"
+	elem 
+		name = "East+UP"
+		command = "MoveKey 4 0"
+	elem 
+		name = "South"
+		command = "MoveKey 2 1"
+	elem 
+		name = "South+UP"
+		command = "MoveKey 2 0"
+	elem 
+		name = "Q"
+		command = "Punch"
+	elem 
+		name = "W"
+		command = "Kick"
+	elem 
+		name = "X"
+		command = "Interact"
+
+
+menu "browser"
+	elem 
+		name = "Close Browser"
+		command = ""
+		saved-params = "is-checked"
+	elem 
+		name = "Close"
+		command = "Close-Browser"
+		category = "Close Browser"
+		saved-params = "is-checked"
+
+
+window "TechTree"
+	elem "TechTree"
+		type = MAIN
+		pos = 372,0
+		size = 357x571
+		anchor1 = none
+		anchor2 = none
+		background-color = #000000
+		is-visible = false
+		border = sunken
+		saved-params = "pos;size;is-minimized;is-maximized"
+		titlebar = false
+		statusbar = false
+		can-close = false
+		can-minimize = false
+		can-resize = false
+		image-mode = center
+	elem "ClassLabel"
+		type = LABEL
+		pos = 0,0
+		size = 357x571
+		anchor1 = none
+		anchor2 = none
+		background-color = none
+		is-disabled = true
+		saved-params = ""
+		text = ""
+		image-mode = stretch
+	elem "Skills"
+		type = GRID
+		pos = 55,200
+		size = 248x256
+		anchor1 = none
+		anchor2 = none
+		font-family = "Comic Sans MS"
+		font-size = 9
+		font-style = "bold"
+		text-color = #ffffff
+		background-color = #000000
+		saved-params = ""
+		cells = 1x1
+		current-cell = 1,1
+		show-lines = horizontal
+		enable-http-images = true
+		highlight-color = #ffff64
+		style = "IMG.icon{width:32;height:32}"
+
+window "default"
+	elem "default"
+		type = MAIN
+		pos = 372,0
+		size = 912x728
+		anchor1 = none
+		anchor2 = none
+		background-color = none
+		is-default = true
+		saved-params = "pos;size;is-minimized;is-maximized"
+		titlebar = false
+		statusbar = false
+		can-resize = false
+		icon = 'InterfaceIcons\\BannerIcon.dmi'
+		macro = "macro"
+		menu = "menu"
+	elem "label1"
+		type = LABEL
+		pos = 0,0
+		size = 912x728
+		anchor1 = none
+		anchor2 = none
+		font-family = "Comic Sans MS"
+		font-size = 8
+		font-style = "bold"
+		text-color = #ffff64
+		background-color = none
+		is-disabled = true
+		saved-params = ""
+		text = "              The phantom of the future v0.1"
+		image = 'InterfaceIcons\\Lobby.dmi'
+		image-mode = stretch
+		align = top-left
+	elem "Report"
+		type = BUTTON
+		pos = 780,700
+		size = 60x20
+		anchor1 = none
+		anchor2 = none
+		font-family = "Comic Sans MS"
+		font-size = 8
+		font-style = "bold"
+		text-color = #ffffff
+		background-color = none
+		is-visible = false
+		saved-params = "is-checked"
+		text = "Report"
+		image = 'InterfaceIcons\\Button122.png'
+		command = "Report"
+	elem "label2"
+		type = LABEL
+		pos = 2,2
+		size = 64x64
+		anchor1 = none
+		anchor2 = none
+		background-color = none
+		saved-params = ""
+		text = ""
+		image = 'InterfaceIcons\\BannerIcon.dmi'
+	elem "Drop"
+		type = BUTTON
+		pos = 148,700
+		size = 60x20
+		anchor1 = none
+		anchor2 = none
+		font-family = "Comic Sans MS"
+		font-size = 8
+		font-style = "bold"
+		text-color = #f7f7f7
+		background-color = none
+		is-visible = false
+		saved-params = "is-checked"
+		text = "Drop"
+		image = 'InterfaceIcons\\Button121.png'
+		command = "Dropzenni"
+	elem "AFK"
+		type = BUTTON
+		pos = 844,700
+		size = 60x20
+		anchor1 = none
+		anchor2 = none
+		font-family = "Comic Sans MS"
+		font-size = 8
+		font-style = "bold"
+		text-color = #ffffff
+		background-color = none
+		is-visible = false
+		saved-params = "is-checked"
+		text = "AFK"
+		image = 'InterfaceIcons\\Button122.png'
+		command = "AFK"
+	elem "PM"
+		type = BUTTON
+		pos = 80,700
+		size = 60x20
+		anchor1 = none
+		anchor2 = none
+		font-family = "Comic Sans MS"
+		font-size = 8
+		font-style = "bold"
+		text-color = #f7f7f7
+		background-color = none
+		is-visible = false
+		saved-params = "is-checked"
+		text = "PM"
+		image = 'InterfaceIcons\\Button121.png'
+		command = "PrivateMessage"
+	elem "WHO"
+		type = BUTTON
+		pos = 16,700
+		size = 60x20
+		anchor1 = none
+		anchor2 = none
+		font-family = "Comic Sans MS"
+		font-size = 8
+		font-style = "bold"
+		text-color = #f7f7f7
+		background-color = none
+		is-visible = false
+		saved-params = "is-checked"
+		text = "Who"
+		image = 'InterfaceIcons\\Button121.png'
+		command = "Who"
+	elem "map1"
+		type = MAP
+		pos = 0,70
+		size = 912x624
+		anchor1 = none
+		anchor2 = none
+		is-default = true
+		saved-params = "icon-size"
+	elem "button2"
+		type = BUTTON
+		pos = 846,1
+		size = 25x21
+		anchor1 = none
+		anchor2 = none
+		background-color = none
+		saved-params = "is-checked"
+		text = ""
+		image = 'InterfaceIcons\\Button2.dmi'
+		command = "MinimizeWindow"
+	elem "questbookchild"
+		type = CHILD
+		pos = 120,80
+		size = 600x400
+		anchor1 = none
+		anchor2 = none
+		background-color = none
+		is-visible = false
+		saved-params = "splitter"
+		left = "Quester"
+		is-vert = false
+	elem "npcdialog"
+		type = CHILD
+		pos = 504,80
+		size = 400x400
+		anchor1 = none
+		anchor2 = none
+		background-color = none
+		is-visible = false
+		saved-params = "splitter"
+		left = "QuestWindow"
+		is-vert = false
+	elem "submitbutton"
+		type = BUTTON
+		pos = 512,500
+		size = 60x20
+		anchor1 = none
+		anchor2 = none
+		font-family = "Calibri"
+		text-color = #ffffff
+		background-color = none
+		is-visible = false
+		saved-params = "is-checked"
+		text = "Submit"
+		image = 'InterfaceIcons\\Button122.png'
+		command = "SubmitName"
+	elem "NameInput"
+		type = INPUT
+		pos = 392,500
+		size = 120x20
+		anchor1 = none
+		anchor2 = none
+		font-family = "Calibri"
+		font-size = 8
+		font-style = "bold"
+		text-color = #ffffff
+		background-color = #275050
+		is-visible = false
+		saved-params = ""
+	elem "Input"
+		type = INPUT
+		pos = 75,674
+		size = 277x20
+		anchor1 = none
+		anchor2 = none
+		font-family = "Calibri"
+		font-size = 8
+		font-style = "bold"
+		background-color = #bdbdff
+		is-visible = false
+		is-default = true
+		border = line
+		saved-params = ""
+	elem "Chatt"
+		type = BUTTON
+		pos = 15,674
+		size = 60x20
+		anchor1 = none
+		anchor2 = none
+		font-family = "Comic Sans MS"
+		font-size = 8
+		font-style = "bold"
+		text-color = #ffffff
+		background-color = none
+		is-visible = false
+		saved-params = "is-checked"
+		text = "World"
+		image = 'InterfaceIcons\\Button121.png'
+		command = "Chat"
+	elem "stats"
+		type = CHILD
+		pos = 630,634
+		size = 206x48
+		anchor1 = none
+		anchor2 = none
+		background-color = none
+		is-visible = false
+		saved-params = "splitter"
+		left = "stats"
+		is-vert = false
+	elem "button1"
+		type = BUTTON
+		pos = 872,1
+		size = 39x21
+		anchor1 = none
+		anchor2 = none
+		background-color = none
+		saved-params = "is-checked"
+		text = ""
+		image = 'InterfaceIcons\\ExitButton.dmi'
+		command = ".quit"
+		is-flat = true
+
+window "inventory"
+	elem "inventory"
+		type = MAIN
+		pos = 372,0
+		size = 264x363
+		anchor1 = none
+		anchor2 = none
+		background-color = none
+		is-visible = false
+		saved-params = "pos;size;is-minimized;is-maximized"
+		title = "Inventory"
+		titlebar = false
+		statusbar = false
+		can-minimize = false
+		can-resize = false
+	elem "label4"
+		type = LABEL
+		pos = 0,0
+		size = 248x28
+		anchor1 = none
+		anchor2 = none
+		background-color = none
+		is-disabled = true
+		saved-params = ""
+		text = ""
+		image = 'InterfaceIcons\\BagBackgroundtop.dmi'
+	elem "label3"
+		type = LABEL
+		pos = 0,28
+		size = 264x335
+		anchor1 = none
+		anchor2 = none
+		font-family = "Calibri"
+		font-size = 12
+		font-style = "bold"
+		text-color = #ffffff
+		background-color = none
+		saved-params = ""
+		text = "  \n\n\n\n\n\n\n\n\n\n\n\n       1000000                                      99               99"
+		image = 'InterfaceIcons\\BagBackground.dmi'
+		image-mode = stretch
+		align = left
+	elem "Inv"
+		type = MAP
+		pos = 12,32
+		size = 240x240
+		anchor1 = none
+		anchor2 = none
+		text-color = #f4373c
+		saved-params = "icon-size"
+		icon-size = 48
+		zoom = 1
+		style = "IMG.icon{width:48;height:48}"
+	elem "label5"
+		type = LABEL
+		pos = 248,0
+		size = 16x28
+		anchor1 = none
+		anchor2 = none
+		background-color = none
+		saved-params = ""
+		text = ""
+		image = 'InterfaceIcons\\BagBackgroundrightfix.dmi'
+	elem "button3"
+		type = BUTTON
+		pos = 246,0
+		size = 18x18
+		anchor1 = none
+		anchor2 = none
+		background-color = none
+		saved-params = "is-checked"
+		text = ""
+		image = 'InterfaceIcons\\BagBagroundExit.dmi'
+		command = "CloseInventory"
+		button-type = pushbox
+
+window "stats"
+	elem "stats"
+		type = MAIN
+		pos = 372,0
+		size = 206x48
+		anchor1 = none
+		anchor2 = none
+		saved-params = "pos;size;is-minimized;is-maximized"
+		titlebar = false
+		statusbar = false
+		can-close = false
+		can-minimize = false
+		can-resize = false
+		is-pane = true
+		image = 'InterfaceIcons\\Lobby.dmi'
+		image-mode = center
+	elem "exp"
+		type = LABEL
+		pos = 0,36
+		size = 206x12
+		anchor1 = none
+		anchor2 = none
+		font-family = "Calibri"
+		font-size = 8
+		font-style = "bold"
+		text-color = #ffffff
+		saved-params = ""
+		text = ""
+		image = 'InterfaceIcons\\ExpBar.dmi'
+		image-mode = stretch
+		align = left
+	elem "stats"
+		type = LABEL
+		pos = 0,49
+		size = 224x15
+		anchor1 = none
+		anchor2 = none
+		saved-params = ""
+		text = ""
+		image-mode = stretch
+	elem "energy"
+		type = LABEL
+		pos = 0,24
+		size = 206x12
+		anchor1 = none
+		anchor2 = none
+		font-family = "Calibri"
+		font-size = 8
+		font-style = "bold"
+		text-color = #ffffff
+		saved-params = ""
+		text = ""
+		image = 'InterfaceIcons\\Energy.dmi'
+		image-mode = stretch
+		align = left
+	elem "ki"
+		type = LABEL
+		pos = 0,12
+		size = 206x12
+		anchor1 = none
+		anchor2 = none
+		font-family = "Calibri"
+		font-size = 8
+		font-style = "bold"
+		text-color = #ffffff
+		saved-params = ""
+		text = ""
+		image = 'InterfaceIcons\\mana.dmi'
+		image-mode = stretch
+		align = left
+	elem "hp"
+		type = LABEL
+		pos = 0,0
+		size = 206x12
+		anchor1 = none
+		anchor2 = none
+		font-family = "Calibri"
+		font-size = 8
+		font-style = "bold"
+		text-color = #ffffff
+		saved-params = ""
+		text = ""
+		image = 'InterfaceIcons\\healt.dmi'
+		image-mode = stretch
+		align = left
+
+window "Browser"
+	elem "Browser"
+		type = MAIN
+		pos = 372,0
+		size = 643x580
+		anchor1 = none
+		anchor2 = none
+		background-color = #000000
+		is-visible = false
+		saved-params = "pos;size;is-maximized"
+		title = "Phantom of the future"
+		statusbar = false
+		can-resize = false
+		menu = "browser"
+	elem "Display"
+		type = LABEL
+		pos = 1,62
+		size = 642x22
+		anchor1 = none
+		anchor2 = none
+		font-style = "bold"
+		text-color = #ffffff
+		background-color = #000000
+		border = line
+		saved-params = ""
+		text = ""
+	elem "DefaultBrowser"
+		type = BROWSER
+		pos = 0,85
+		size = 643x495
+		anchor1 = 0,0
+		anchor2 = 100,100
+		is-default = true
+		border = line
+		saved-params = ""
+	elem "Browser"
+		type = LABEL
+		pos = 1,1
+		size = 642x60
+		anchor1 = none
+		anchor2 = none
+		background-color = #000000
+		border = line
+		saved-params = ""
+		text = ""
+	elem "Home"
+		type = BUTTON
+		pos = 197,64
+		size = 60x20
+		anchor1 = none
+		anchor2 = none
+		font-style = "bold"
+		text-color = #ffffff
+		saved-params = "is-checked"
+		text = "Home"
+		command = "Home"
+		is-flat = true
+	elem "Updates"
+		type = BUTTON
+		pos = 323,64
+		size = 60x20
+		anchor1 = none
+		anchor2 = none
+		font-style = "bold"
+		text-color = #ffffff
+		saved-params = "is-checked"
+		text = "Updates"
+		command = "Updates"
+		is-flat = true
+	elem "Guide"
+		type = BUTTON
+		pos = 386,64
+		size = 60x20
+		anchor1 = none
+		anchor2 = none
+		font-style = "bold"
+		text-color = #ffffff
+		saved-params = "is-checked"
+		text = "Guide"
+		command = "Guide"
+		is-flat = true
+	elem "Rules"
+		type = BUTTON
+		pos = 260,64
+		size = 60x20
+		anchor1 = none
+		anchor2 = none
+		font-style = "bold"
+		text-color = #ffffff
+		saved-params = "is-checked"
+		text = "Rules"
+		command = "Rules"
+		is-flat = true
+
+window "Partywindow"
+	elem "Partywindow"
+		type = MAIN
+		pos = 372,0
+		size = 376x189
+		anchor1 = none
+		anchor2 = none
+		background-color = #000000
+		is-visible = false
+		saved-params = "pos;size;is-maximized"
+		title = "Party Window"
+		titlebar = false
+		statusbar = false
+		can-close = false
+		can-minimize = false
+		can-resize = false
+		icon = 'InterfaceIcons\\BannerIcon.dmi'
+	elem "label6"
+		type = LABEL
+		pos = 0,0
+		size = 376x20
+		anchor1 = none
+		anchor2 = none
+		font-family = "Calibri"
+		font-size = 8
+		font-style = "bold"
+		text-color = #ffffff
+		background-color = #ffffff
+		is-disabled = true
+		border = line
+		saved-params = ""
+		text = "PARTY WINDOW "
+		image = 'InterfaceIcons\\healt.dmi'
+		image-mode = stretch
+	elem "peoplegrid"
+		type = GRID
+		pos = 60,20
+		size = 316x169
+		anchor1 = none
+		anchor2 = none
+		font-family = "Candara"
+		font-size = 12
+		text-color = #ffff00
+		background-color = #000000
+		saved-params = ""
+		cells = 2x1
+		current-cell = 1,1
+		line-color = #400040
+		highlight-color = #ffff00
+		style = "IMG.icon{width:32;height:32}"
+	elem "create"
+		type = BUTTON
+		pos = 0,20
+		size = 60x20
+		anchor1 = none
+		anchor2 = none
+		font-family = "Calibri"
+		font-size = 8
+		font-style = "bold"
+		text-color = #ffffff
+		background-color = #000000
+		saved-params = "is-checked"
+		text = "Create"
+		image = 'InterfaceIcons\\Button121.png'
+		command = "makeparty"
+	elem "speak"
+		type = BUTTON
+		pos = 0,80
+		size = 60x20
+		anchor1 = none
+		anchor2 = none
+		font-family = "Calibri"
+		font-size = 8
+		font-style = "bold"
+		text-color = #ffffff
+		background-color = #000000
+		is-visible = false
+		saved-params = "is-checked"
+		text = "Chat"
+		image = 'InterfaceIcons\\Button121.png'
+		command = "chatparty"
+	elem "eject"
+		type = BUTTON
+		pos = 0,100
+		size = 60x20
+		anchor1 = none
+		anchor2 = none
+		font-family = "Calibri"
+		font-size = 8
+		font-style = "bold"
+		text-color = #ffffff
+		background-color = #000000
+		is-visible = false
+		saved-params = "is-checked"
+		text = "Eject"
+		image = 'InterfaceIcons\\Button121.png'
+		command = "ejectparty"
+	elem "break"
+		type = BUTTON
+		pos = 0,120
+		size = 60x20
+		anchor1 = none
+		anchor2 = none
+		font-family = "Calibri"
+		font-size = 8
+		font-style = "bold"
+		text-color = #f7f7f7
+		background-color = #000000
+		is-visible = false
+		saved-params = "is-checked"
+		text = "Break"
+		image = 'InterfaceIcons\\Button121.png'
+		command = "breakparty"
+	elem "leave"
+		type = BUTTON
+		pos = 0,168
+		size = 60x20
+		anchor1 = none
+		anchor2 = none
+		font-family = "Calibri"
+		font-size = 8
+		font-style = "bold"
+		text-color = #ffffff
+		background-color = #000000
+		is-visible = false
+		saved-params = "is-checked"
+		text = "Leave"
+		image = 'InterfaceIcons\\Button122.png'
+		command = "exitparty"
+	elem "invite"
+		type = BUTTON
+		pos = 0,60
+		size = 60x20
+		anchor1 = none
+		anchor2 = none
+		font-family = "Calibri"
+		font-size = 8
+		font-style = "bold"
+		text-color = #ffffff
+		background-color = #000000
+		is-visible = false
+		saved-params = "is-checked"
+		text = "Invite"
+		image = 'InterfaceIcons\\Button121.png'
+		command = "inviteparty"
+	elem "options"
+		type = BUTTON
+		pos = 0,40
+		size = 60x20
+		anchor1 = none
+		anchor2 = none
+		font-family = "Calibri"
+		font-size = 8
+		font-style = "bold"
+		text-color = #ffffff
+		background-color = #000000
+		is-visible = false
+		saved-params = "is-checked"
+		text = "Options"
+		image = 'InterfaceIcons\\Button121.png'
+		command = "optionsparty"
+
+window "QuestWindow"
+	elem "QuestWindow"
+		type = MAIN
+		pos = 372,0
+		size = 400x400
+		anchor1 = none
+		anchor2 = none
+		background-color = none
+		border = sunken
+		saved-params = "pos;size;is-minimized;is-maximized"
+		titlebar = false
+		statusbar = false
+		can-close = false
+		can-minimize = false
+		can-resize = false
+		is-pane = true
+	elem "label9"
+		type = LABEL
+		pos = 0,0
+		size = 400x400
+		anchor1 = none
+		anchor2 = none
+		background-color = #000000
+		saved-params = ""
+		text = ""
+	elem "NPCText"
+		type = LABEL
+		pos = 0,21
+		size = 400x379
+		anchor1 = none
+		anchor2 = none
+		font-family = "Comic Sans MS"
+		font-size = 7
+		font-style = "bold"
+		text-color = #ffffff
+		background-color = #2c2c2c
+		border = sunken
+		saved-params = ""
+		text = "\n\n\nIf you haven't noticed, there are an abundant amount of rabbits around town. Please use this net and capture 15 of them so that I can have them relocated.If you haven't noticed, there are an abundant amount of rabbits around town. Please use this net and capture 15 of them so that I can have them relocated.If you haven't noticed, there are an abundant amount of rabbits around town. Please use this net and capture 15 of them so that I can have them relocated.If you haven't noticed, there are an abundant amount of rabbits around town. Please use this net and capture 15 of them so that I can have them relocated.If you haven't noticed, there are an abundant amount of rabbits around town. Please use this net and capture 15 of them so that I can have them relocated.If you haven't noticed, there are an abundant amount of rabbits around town. Please use this net and cSADSDASADSA\n\t\t\t\t\t"
+		image-mode = stretch
+		text-wrap = true
+	elem "Icon"
+		type = LABEL
+		pos = 8,32
+		size = 64x64
+		anchor1 = none
+		anchor2 = none
+		background-color = none
+		saved-params = ""
+		text = ""
+		image-mode = stretch
+	elem "NPCName"
+		type = LABEL
+		pos = 0,0
+		size = 400x21
+		anchor1 = none
+		anchor2 = none
+		font-style = "bold"
+		text-color = #f7f7f7
+		background-color = #7e5b41
+		border = line
+		saved-params = ""
+		text = "Name"
+		image = 'InterfaceIcons\\healt.dmi'
+		image-mode = stretch
+
+window "Quester"
+	elem "Quester"
+		type = MAIN
+		pos = 372,0
+		size = 600x400
+		anchor1 = none
+		anchor2 = none
+		background-color = #2c2c2c
+		saved-params = "pos;size;is-minimized;is-maximized"
+		titlebar = false
+		statusbar = false
+		can-close = false
+		can-minimize = false
+		can-resize = false
+		is-pane = true
+		image-mode = center
+	elem "label10"
+		type = LABEL
+		pos = 0,24
+		size = 600x376
+		anchor1 = none
+		anchor2 = none
+		background-color = #2c2c2c
+		saved-params = ""
+		text = ""
+	elem "label7"
+		type = LABEL
+		pos = 0,0
+		size = 600x21
+		anchor1 = none
+		anchor2 = none
+		font-style = "bold"
+		text-color = #f7f7f7
+		background-color = #7e5b41
+		is-disabled = true
+		border = line
+		saved-params = ""
+		text = "Quest Book"
+		image = 'InterfaceIcons\\healt.dmi'
+		image-mode = stretch
+	elem "QuestDisplay"
+		type = GRID
+		pos = 1,24
+		size = 247x352
+		anchor1 = none
+		anchor2 = none
+		font-family = "Calibri"
+		font-size = 7
+		font-style = "bold"
+		text-color = #f7f7f7
+		background-color = #2c2c2c
+		saved-params = ""
+		cells = 1x1
+		current-cell = 1,1
+		show-lines = vertical
+		enable-http-images = true
+		line-color = #2c2c2c
+		highlight-color = #6f6fff
+		style = "IMG.icon{width:32;height:64}"
+	elem "InfoQuest"
+		type = LABEL
+		pos = 256,88
+		size = 344x288
+		anchor1 = none
+		anchor2 = none
+		font-family = "Calibri"
+		font-size = 8
+		font-style = "bold"
+		text-color = #ffffff
+		background-color = #2c2c2c
+		saved-params = ""
+		text = ""
+		text-wrap = true
+	elem "QuestName"
+		type = LABEL
+		pos = 400,40
+		size = 104x20
+		anchor1 = none
+		anchor2 = none
+		font-family = "Comic Sans MS"
+		font-size = 8
+		font-style = "bold"
+		text-color = #ffffff
+		background-color = #2c2c2c
+		saved-params = ""
+		text = ""
+	elem "leftquset"
+		type = LABEL
+		pos = 390,76
+		size = 128x20
+		anchor1 = none
+		anchor2 = none
+		font-family = "Comic Sans MS"
+		font-size = 8
+		font-style = "bold"
+		text-color = #ffffff
+		background-color = #2c2c2c
+		saved-params = ""
+		text = ""
+	elem "QIcons"
+		type = LABEL
+		pos = 344,64
+		size = 48x48
+		anchor1 = none
+		anchor2 = none
+		background-color = #2c2c2c
+		saved-params = ""
+		text = ""
+	elem "nameq_ID"
+		type = LABEL
+		pos = 344,40
+		size = 48x20
+		anchor1 = none
+		anchor2 = none
+		font-family = "Comic Sans MS"
+		font-size = 8
+		font-style = "bold"
+		text-color = #f7f7f7
+		background-color = #2c2c2c
+		saved-params = ""
+		text = ""
+	elem "Icon"
+		type = LABEL
+		pos = 272,24
+		size = 64x64
+		anchor1 = none
+		anchor2 = none
+		background-color = #2c2c2c
+		saved-params = ""
+		text = ""
+	elem "Done_"
+		type = BUTTON
+		pos = 402,376
+		size = 60x20
+		anchor1 = none
+		anchor2 = none
+		font-size = 6
+		font-style = "bold"
+		text-color = #ffffff
+		background-color = none
+		saved-params = "is-checked"
+		text = "Complete"
+		image = 'InterfaceIcons\\Button122.png'
+		command = "CompleteQuest"
+
