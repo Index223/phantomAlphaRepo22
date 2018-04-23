@@ -59,9 +59,8 @@ mob
 				resetState(/*Phat T*/)
 			blast()
 			melee()
-
 				var/power = src.stats["strength"].value()*rand(25.1,34.9)
-				var/defense = target.stats["defence"].value()*2
+				var/defense = target.stats["defence"].value
 				var/_damage = round(power/defense)
 				src.DamageAI(src.target, _damage)
 				src.next_attack = world.time+rand(10,15)

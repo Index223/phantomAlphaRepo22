@@ -119,6 +119,18 @@ mob
 			src.client.screen += new/obj/TechTree/CS/LegsSlot
 			src.client.screen += new/obj/TechTree/CS/NecklaceSlot
 			src.client.screen += new/obj/TechTree/CS/WeponSlot
+			var/obj/TechTree/text1str/a = locate() in src.client.screen
+			if(a)
+				a.maptext="<b><font family=Calibri>Str: [src.stats["strength"].value()]<font color=#c266ff> (+[src.stats["bonusstr"].value()])"
+			var/obj/TechTree/text1mag/b = locate() in src.client.screen
+			if(b)
+				b.maptext="<b><font family=Calibri>Mag: [src.stats["magic"].value()]<font color=#c266ff> (+[src.stats["bonusmag"].value()])"
+			var/obj/TechTree/text1def/c = locate() in src.client.screen
+			if(c)
+				c.maptext="<b><font family=Calibri>Def: [src.stats["defence"].value()]<font color=#c266ff> (+[src.stats["defence"].value()])"
+			var/obj/TechTree/text0/d = locate() in src.client.screen
+			if(d)
+				d.maptext="<font family=Comic Sans MS><font color=white><b>Name:</b> [src.name] <b>LvL:</b> [src.stats["level"].value()]"
 		CloseTech()
 			for(var/obj/TechTree/a in src.client.screen)
 				src.client.screen-=a
@@ -416,47 +428,49 @@ obj
 			icon=null
 			screen_loc="11,12"
 			layer=OBJ_LAYER+1
-			New()
-				if(owner)
-					maptext_width=256
-					maptext_height=256
-					maptext_y = 16
-					maptext_x = 8
-					maptext="<font family=Comic Sans MS><font color=white><b>Name:</b> [owner.name] <b>LvL:</b> [owner.stats["level"].value()]"
+			maptext_width=256
+			maptext_height=256
+			maptext_y = 16
+			maptext_x = 8
+
+
+
 		text1
 			icon=null
 			icon_state ="text1"
 			screen_loc="6:-16,10:16"
+			maptext_width=256
+			maptext_height=256
+			maptext_y = 16
+			maptext_x = -64
 			New()
 
-				maptext_width=256
-				maptext_height=256
-				maptext_y = 16
-				maptext_x = -64
+
 				maptext="<b><font family=Calibri>Points left:"
 		text2
 			icon=null
 			icon_state ="text2"
 			screen_loc="7,10:16"
 			layer=OBJ_LAYER+1
+			maptext_width=256
+			maptext_height=256
+			maptext_y = 16
+			maptext_x = -20
 			New()
-				maptext_width=256
-				maptext_height=256
-				maptext_y = 16
-				maptext_x = -20
+
 				maptext="<b><font family=Calibri>[usr.battlepoints]"
 
 		text1str
 			screen_loc="5,10:3"
 			icon=null
 			layer=OBJ_LAYER+1
-			New()
-				if(owner)
-					maptext_width=256
-					maptext_height=256
-					maptext_y = -6
-					maptext_x = -16
-					maptext="<b><font family=Calibri>Str: [owner.stats["strength"].value()]<font color=#c266ff> (+[owner.stats["bonusstr"].value()])"
+			maptext_width=256
+			maptext_height=256
+			maptext_y = -6
+			maptext_x = -16
+
+
+
 
 
 		addstr
@@ -476,9 +490,9 @@ obj
 				set src in usr
 				if(usr.battlepoints > 0)
 					usr.battlepoints --
-					usr.stats["strength"].setLimit((usr.stats["strength"].limit()+1)) // What did this originally dop ?
-					// you lose battle point and gain str point ooh
-					// In this instance, do you want it to directly affect it's value, or just give strength experience? ye directly
+
+					usr.stats["strength"].gain_xp((usr.stats["strength"].xp_next -usr.stats["strength"].xp)) // What did this originally dop ?
+
 
 					var/obj/TechTree/text1str/m = locate() in usr.client.screen
 					if(m)
@@ -491,7 +505,18 @@ obj
 					var/obj/CharacterHud/h14/h= locate() in usr.client.screen
 					if(h)
 						h.maptext="<b>[usr.stats["strength"].value()]"
+					if(usr.battlepoints ==0)
+						src.icon_state="Add-Locked"
+
+						var/obj/TechTree/addmag/a = locate() in usr.client.screen
+						if(a)
+							a.icon_state="Add-Locked"
+
+						var/obj/TechTree/adddef/b = locate() in usr.client.screen
+						if(b)
+							b.icon_state="Add-Locked"
 				else
+
 					src.icon_state="Add-Locked"
 
 					var/obj/TechTree/addmag/a = locate() in usr.client.screen
@@ -510,63 +535,81 @@ obj
 			screen_loc="5,9:3"
 			icon=null
 			layer=OBJ_LAYER+1
-
+			maptext_width=256
+			maptext_height=256
+			maptext_y = 12
+			maptext_x = -16
 			New()
 				if(owner)
-					maptext_width=256
-					maptext_height=256 //  1 sec go on x
-					maptext_y = 16
-					maptext_x = -16
-					maptext="<b><font family=Calibri>Mag: [owner.stats["magic"].value()]<font color=#c266ff> (+[owner.stats["bonusmagic"].value()])"
 
+					maptext="<b><font family=Calibri>Magic: [owner.stats["magic"].value()]<font color=#c266ff> (+[owner.stats["bonusmag"].value()])"
 		addmag
 			icon_state ="add"
 			screen_loc="7:13,9:16"
+			MouseEntered()
+				animate(src, transform = matrix()*1.05, time = 1)
+			MouseExited()
+				animate(src, transform = matrix()*1.0, time = 1)
 			New()
 				if(usr.battlepoints < 1)
 					src.icon_state="Add-Locked"
 				else
 					src.icon_state ="add"
-			MouseEntered()
-				animate(src, transform = matrix()*1.05, time = 1)
-			MouseExited()
-				animate(src, transform = matrix()*1.0, time = 1)
+
 			Click()
 				set src in usr
 				if(usr.battlepoints > 0)
 					usr.battlepoints --
-					usr.stats["magic"].setLimit((usr.stats["magic"].limit()+1))
+					usr.stats["magic"].gain_xp(usr.stats["magic"].xp_next - usr.stats["magic"].xp) // What did this originally dop ?
+					// you lose battle point and gain str point ooh
+					// In this instance, do you want it to directly affect it's value, or just give strength experience? ye directly
 
-					var/obj/TechTree/text1mag/m = locate() in usr.client.screen // ??
+					var/obj/TechTree/text1mag/m = locate() in usr.client.screen
 					if(m)
-						m.maptext="<b><font family=Calibri>Mag: [usr.stats["magic"].value()]<font color=#c266ff> (+[usr.stats["bonusmagic"].value()])"
+						m.maptext="<b><font family=Calibri>Mag: [usr.stats["magic"].value()]<font color=#c266ff> (+[usr.stats["bonusmag"].value()])"
 
 					var/obj/TechTree/text2/A = locate() in usr.client.screen
 					if(A)
 						A.maptext="<b><font family=Calibri>[usr.battlepoints]"
-					var/obj/CharacterHud/h15/h = locate() in usr.client.screen
+
+					var/obj/CharacterHud/h15/h= locate() in usr.client.screen
 					if(h)
 						h.maptext="<b>[usr.stats["magic"].value()]"
+					if(usr.battlepoints ==0)
+						src.icon_state="Add-Locked"
+
+						var/obj/TechTree/addmag/a = locate() in usr.client.screen
+						if(a)
+							a.icon_state="Add-Locked"
+
+						var/obj/TechTree/adddef/b = locate() in usr.client.screen
+						if(b)
+							b.icon_state="Add-Locked"
 				else
+
 					src.icon_state="Add-Locked"
-					var/obj/TechTree/adddef/a = locate() in usr.client.screen
+
+					var/obj/TechTree/addmag/a = locate() in usr.client.screen
 					if(a)
 						a.icon_state="Add-Locked"
-					var/obj/TechTree/addstr/b = locate() in usr.client.screen
+
+					var/obj/TechTree/adddef/b = locate() in usr.client.screen
 					if(b)
 						b.icon_state="Add-Locked"
+					src.icon_state="Add-Locked"
 
 
 		text1def
 			screen_loc="5,8:24"
 			icon=null
 			layer=OBJ_LAYER+1
+			maptext_width=256
+			maptext_height=256
+			maptext_y = 16
+			maptext_x = -16
 			New()
 				if(owner)
-					maptext_width=256
-					maptext_height=256
-					maptext_y = 16
-					maptext_x = -16
+
 					maptext="<b><font family=Calibri>Def: [owner.stats["defence"].value()]<font color=#c266ff> (+[owner.stats["bonusdef"].value()])"
 		adddef
 			icon_state ="add"
@@ -585,7 +628,7 @@ obj
 				set src in usr
 				if(usr.battlepoints > 0)
 					usr.battlepoints --
-					usr.stats["defence"].setLimit((usr.stats["defence"].limit()+1))
+					usr.stats["defence"].gain_xp(usr.stats["defence"].xp_next - usr.stats["defence"].xp)
 
 					var/obj/TechTree/text1def/m = locate() in usr.client.screen
 					if(m)
@@ -596,6 +639,16 @@ obj
 					var/obj/CharacterHud/h16/h= locate() in usr.client.screen
 					if(h)
 						h.maptext="<b>[usr.stats["defence"].value()]"
+					if(usr.battlepoints ==0)
+						src.icon_state="Add-Locked"
+
+						var/obj/TechTree/addmag/a = locate() in usr.client.screen
+						if(a)
+							a.icon_state="Add-Locked"
+
+						var/obj/TechTree/adddef/b = locate() in usr.client.screen
+						if(b)
+							b.icon_state="Add-Locked"
 				else
 					src.icon_state="Add-Locked"
 					var/obj/TechTree/addmag/a = locate() in usr.client.screen
@@ -608,11 +661,12 @@ obj
 			screen_loc="5,8:-3"
 			icon=null
 			layer=OBJ_LAYER+1
+			maptext_width=256
+			maptext_height=256
+			maptext_y = 16
+			maptext_x = -16
 			New()
-				maptext_width=256
-				maptext_height=256
-				maptext_y = 16
-				maptext_x = -16
+
 				maptext="<b><font family=Calibri>Critical: [usr.critical] %"
 
 
@@ -654,11 +708,12 @@ obj
 			screen_loc="5,7:16"
 			icon=null
 			layer=OBJ_LAYER+1
+			maptext_width=256
+			maptext_height=256
+			maptext_y = 16
+			maptext_x = -16
 			New()
-				maptext_width=256
-				maptext_height=256
-				maptext_y = 16
-				maptext_x = -16
+
 				maptext="<b><font family=Calibri>Dodge: [usr.dodge] %"
 
 

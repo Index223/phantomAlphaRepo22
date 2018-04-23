@@ -11,7 +11,7 @@
 */
 
 
-#define LEVELCAP 100	//defines levelcap. precompilement
+#define LEVELCAP 200	//defines levelcap. precompilement
 
 //attribute acts as stats
 //The mob tree is below
@@ -125,3 +125,39 @@ attribute
 			catch(var/exception/e)
 				world.log << "[e] on [e.file]:[e.line]"
 
+		//add
+		addValue(val)
+			try
+				value += val
+			catch(var/exception/e)
+				world.log << "[e] on [e.file]:[e.line]"
+		addLimit(val)
+			try
+				limit += val
+			catch(var/exception/e)
+				world.log << "[e] on [e.file]:[e.line]"
+		addLevel(val)
+			try
+				level += val
+			catch(var/exception/e)
+				world.log << "[e] on [e.file]:[e.line]"
+		addXp(val)
+			try
+				xp += val
+			catch(var/exception/e)
+				world.log << "[e] on [e.file]:[e.line]"
+		addXp_next(val)
+			try
+				xp_next += val
+			catch(var/exception/e)
+				world.log << "[e] on [e.file]:[e.line]"
+		add_limit_gain_rate(val)
+			try
+				limit_gain_rate += val
+			catch(var/exception/e)
+				world.log << "[e] on [e.file]:[e.line]"
+		add_xp_gain_rate(val)
+			try
+				xp_gain_rate += val
+			catch(var/exception/e)
+				world.log << "[e] on [e.file]:[e.line]"

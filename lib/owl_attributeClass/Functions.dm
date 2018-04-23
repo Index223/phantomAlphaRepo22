@@ -14,7 +14,7 @@ mob
 
 			stats = list(\
 			//New(name,value=0,level=1,xp_next=100,limit_gain_rate=1.5, xp_gain_rate=1.04)
-			"level" = new/attribute("level", 1, 1, 100, 1, 1.1),
+			"level" = new/attribute("level", 1, 1, 100, 1, 1),
 			"strength" = new/attribute("strength", 5,1, 100, 2, 1.1), // 5 str ok
 			"defence" = new/attribute("defence", 5, 1, 100, 2, 1.1),
 			"magic" = new/attribute("magic", 5, 1, 100, 2, 1.1),
@@ -37,18 +37,18 @@ mob
 
 		give_xp(amount)
 			var/returnLevelUpIndicator = FALSE
+			var/battlepointsToGive = 1
 			//give experience to an individual stat
 
 			//static stats that gains experience no matter what.
-
-			while(stats["strength"].gain_xp(amount) > 0) returnLevelUpIndicator = TRUE
-			while(stats["defence"].gain_xp(amount) > 0) returnLevelUpIndicator = TRUE
-			while(stats["magic"].gain_xp(amount) > 0) returnLevelUpIndicator = TRUE
-			while(stats["level"].gain_xp(amount) > 0) returnLevelUpIndicator = TRUE
+			while(stats["level"].gain_xp(amount) > 0)
+				returnLevelUpIndicator = TRUE
+				battlepoints += battlepointsToGive //1 point pr. level atm
 			while(stats["hp"].gain_xp(amount) > 0) returnLevelUpIndicator = TRUE
 			while(stats["ki"].gain_xp(amount) > 0) returnLevelUpIndicator = TRUE
 			while(stats["energy"].gain_xp(amount) > 0) returnLevelUpIndicator = TRUE
-			if(returnLevelUpIndicator == TRUE) Lvlupindicator()
+			if(returnLevelUpIndicator == TRUE)
+				Lvlupindicator()
 			/*
 			This could be changable later. what is lvl up indicator :O ?
 			Ops
