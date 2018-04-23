@@ -28,6 +28,7 @@
 // END_PREFERENCES
 
 // BEGIN_INCLUDE
+#include "Character\Attributes.dm"
 #include "Character\Character vars.dm"
 #include "Character\Chat.dm"
 #include "Character\Clothes.dm"
@@ -59,6 +60,8 @@
 #include "Coding\The Phantom of the Future.dm"
 #include "InterfaceIcons\Interface.dmf"
 #include "lib\owl_attributeClass\attributeClass.dm"
+#include "lib\owl_attributeClass\Example_for_combat.dm"
+#include "lib\owl_attributeClass\Functions.dm"
 #include "Mapping\Turfs.dm"
 #include "Mapping\Warps.dm"
 #include "Mapping\Map.dmm"

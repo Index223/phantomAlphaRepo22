@@ -231,7 +231,7 @@ proc/partycheck(mob/ref,exp,aur)
 				spawn(1)
 					if(o)
 						o.exp+=exp
-					//	spawn(1)if(o)o.Level_Up(/*Phat T*/)
+					//	spawn(1)if(o)o.Level_Up(/*Phat T*/) //
 						spawn(4)if(o)o.show_damage3(o,"Exp + [exp]","aqua")
 
 			return 1

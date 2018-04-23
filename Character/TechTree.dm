@@ -473,7 +473,7 @@ obj
 
 					var/obj/TechTree/text1str/m = locate() in usr.client.screen
 					if(m)
-						m.maptext="<b><font family=Calibri>[usr.str]"
+						m.maptext="<b><font family=Calibri>Str: [usr.str]<font color=#c266ff> (+[usr.bonusstr])"
 
 					var/obj/TechTree/text2/A = locate() in usr.client.screen
 					if(A)
@@ -527,7 +527,7 @@ obj
 
 					var/obj/TechTree/text1mag/m = locate() in usr.client.screen
 					if(m)
-						m.maptext="<b><font family=Calibri>[usr.magic]"
+						m.maptext="<b><font family=Calibri>Mag: [usr.magic]<font color=#c266ff> (+[usr.bonusmagic])"
 
 					var/obj/TechTree/text2/A = locate() in usr.client.screen
 					if(A)
@@ -576,7 +576,7 @@ obj
 
 					var/obj/TechTree/text1def/m = locate() in usr.client.screen
 					if(m)
-						m.maptext="<b><font family=Calibri>[usr.def]"
+						m.maptext="<b><font family=Calibri>Def: [usr.def]<font color=#c266ff> (+[usr.bonusdef])"
 					var/obj/TechTree/text2/A = locate() in usr.client.screen
 					if(A)
 						A.maptext="<b><font family=Calibri>[usr.battlepoints]"
