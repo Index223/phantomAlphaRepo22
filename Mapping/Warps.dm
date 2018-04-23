@@ -150,14 +150,8 @@ turf
 					c.savezone=0
 					c.loc=locate(109,92,1)
 		EnterArena
-			Entered(mob/m)
-				if(istype(m,/mob/player))
-					var/mob/player/c = m
-					if(c.level > 19)
-						c.savezone=1
-						c.loc=pick(locate(17,63,2),locate(16,63,2))
-					else
-						show_damage2(c,"<font size=1>LvL 20","white")
+
+
 		ExitArena
 			Entered(mob/m)
 				if(istype(m,/mob/player))

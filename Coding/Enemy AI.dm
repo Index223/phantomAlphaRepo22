@@ -34,7 +34,7 @@ mob
 					src.loc=null
 				else
 					src.loc = home_loc
-					src.hp = src.maxhp
+					src.stats["hp"].setValue(stats["hp"].limit())
 					src.aggro_loc=null
 					src.target=null
 
@@ -60,8 +60,8 @@ mob
 			blast()
 			melee()
 
-				var/power = src.str*rand(25.1,34.9)
-				var/defense = target.def*2
+				var/power = src.stats["strength"].value()*rand(25.1,34.9)
+				var/defense = target.stats["defence"].value()*2
 				var/_damage = round(power/defense)
 				src.DamageAI(src.target, _damage)
 				src.next_attack = world.time+rand(10,15)

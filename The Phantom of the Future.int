@@ -1,19 +1,19 @@
 // BEGIN_INTERNALS
 /*
-LAST_COMPILE_TIME: 1524479045
-DIR: Character Character\CharacterCreatingIcons Coding lib lib\owl_attributeClass Mapping 
+LAST_COMPILE_TIME: 1524489455
 PACKAGE_RSC_NAME: C:\Users\Rudi\Desktop\One Strike\The Phantom of the Future\The Phantom of the Future_rsc.zip
+DIR: Character Character\CharacterCreatingIcons Coding InterfaceIcons lib lib\owl_attributeClass Mapping 
 AUTO_FILE_DIR: ON
 PACKAGE_DMB_INFO: 
 MAP_ICON_TYPE: 0
 PACKAGE_DME_NAME: C:\Users\Rudi\Desktop\One Strike\The Phantom of the Future\The Phantom of the Future_src.zip
-LAST_COMPILE_VERSION: 511.1385
-PACKAGE_TYPE: 0
+LAST_COMPILE_VERSION: 512.1422
 PACKAGE_DME_START: 
-WINDOW: lib\owl_attributeClass\attributeClass.dm;Character\Attributes.dm;Character\Hud.dm;Character\Techniques.dm;Character\CharacterCreatingIcons\Character Selection.dm;Character\CharacterCreatingIcons\CharacterCreating Setup.dm;Character\TechTree.dm;Mapping\Map.dmm;Character\Character vars.dm;Character\Hp.dm;Character\Hotkeys.dmi;Character\LevelUp.dm;Coding\Party.dm;lib\owl_attributeClass\Functions.dm;lib\owl_attributeClass\Example_for_combat.dm;Character\Damage.dm
+PACKAGE_TYPE: 0
+WINDOW: Character\Hud.dm;Character\Techniques.dm;Character\CharacterCreatingIcons\Character Selection.dm;Character\CharacterCreatingIcons\CharacterCreating Setup.dm;Character\TechTree.dm;lib\owl_attributeClass\Functions.dm;Coding\Party.dm;Coding\Enemy AI.dm;_predefinitions.dm
 PACKAGE_DME_INFO: 
-FILE: lib\owl_attributeClass\Example_for_combat.dm
-PACKAGE_DMB_NAME: C:\Users\Rudi\Desktop\One Strike\The Phantom of the Future\The Phantom of the Future.zip
+FILE: Character\TechTree.dm
 PACKAGE_DME_DEMO: 
+PACKAGE_DMB_NAME: C:\Users\Rudi\Desktop\One Strike\The Phantom of the Future\The Phantom of the Future.zip
 */
 // END_INTERNALS

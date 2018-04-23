@@ -73,14 +73,14 @@ mob
 				var/obj/QuestItem/Ganos/c =locate(/*Phat T*/) in usr.Questbooklist
 				usr.Questbooklist-=c
 				usr.UpdateQuestBook()
-				usr.exp +=100
+				usr.give_xp(100)
 				usr.queststage=2
 				usr.Questbooklist+=new/obj/QuestItem/Elyse
 			if(usr.queststage==2 && usr.mineralsgathered == 20)
 				var/obj/QuestItem/Elyse/c =locate(/*Phat T*/) in usr.Questbooklist
 				usr.Questbooklist-=c
 				usr.UpdateQuestBook()
-				usr.exp +=150
+				usr.give_xp(150)
 				usr.queststage=3
 
 

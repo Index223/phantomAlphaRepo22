@@ -28,6 +28,7 @@
 // END_PREFERENCES
 
 // BEGIN_INCLUDE
+#include "_predefinitions.dm"
 #include "Character\Attributes.dm"
 #include "Character\Character vars.dm"
 #include "Character\Chat.dm"
@@ -60,6 +61,7 @@
 #include "Coding\The Phantom of the Future.dm"
 #include "InterfaceIcons\Interface.dmf"
 #include "lib\owl_attributeClass\attributeClass.dm"
+#include "lib\owl_attributeClass\class limit_gain_rate.dm"
 #include "lib\owl_attributeClass\Example_for_combat.dm"
 #include "lib\owl_attributeClass\Functions.dm"
 #include "Mapping\Turfs.dm"
