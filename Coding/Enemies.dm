@@ -33,19 +33,31 @@ mob
 	Enemy
 		New(/*Phat T*/)
 			..(/*Phat T*/)
-			maxhp=hp
+			src.stats["hp"].setValue(stats["hp"].limit())
 			src.home_loc = src.loc
 		var/speactext
 		var/list/ContainMobs=list()
 		icon='Enemies.dmi'
+
+
+		proc
+			Enemy_stats()
+				src.stats["hp"].setValue(100)
+				src.stats["strenght"].setValue(5)
+				src.stats["magic"].setValue(5)
+				src.stats["defense"].setValue(5)
+
 		Earthregion
 			Brusolini3
 				icon_state="enemy11"
 				bounds="12,6 to 36,39"
 				step_size=4
+
+
 				New()
 					..()
 					var/turf/T
+					Enemy_stats()
 					for(T in range(3, src))
 						if(T)
 							if(!T.density)
@@ -61,6 +73,7 @@ mob
 				step_size=4
 				New()
 					..()
+					Enemy_stats()
 
 			Brusolini5
 				icon_state="enemy3"
@@ -69,6 +82,7 @@ mob
 				New()
 					..()
 					var/turf/T
+					Enemy_stats()
 					for(T in range(3, src))
 						if(T)
 							if(!T.density)

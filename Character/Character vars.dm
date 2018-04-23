@@ -15,9 +15,6 @@ mob
 		overlayslist
 		screenobjects
 		queststage=1
-		str = 5
-		def = 5
-		magic = 5
 		confused=0
 		money
 		bankedmoney
@@ -26,28 +23,13 @@ mob
 		guild
 		guildtag
 		admin_tag
-		battlepoints = 3
+		battlepoints = 3 //didn't include that no need OK just asking to be sure :D
 		techpoints=3
-		level=1
-
-		maxhp=200
-		hp=200
-		maxexp=100
-		exp=50
-		energy=175
-		maxenergy=175
-		ki=175
-		maxki=175
 		onboat=0
 		deflect=0
-		bonusstr= 0
-		bonusmagic=0
-		bonusdef=0
 		dazingchanse=0
 		tmp/attacking=0
 		attackspeed=3
-
-
 		critical = 0
 		dodge = 0
 		dead=0

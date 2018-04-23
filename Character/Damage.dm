@@ -58,17 +58,20 @@ mob
 				return
 			if(prob(src.critical))
 				var/criticaldmg = damage*2
-				a.hp -= criticaldmg
+				a.stats["hp"].setValue(a.stats["hp"].value() - criticaldmg)
 				show_damage(a,"[criticaldmg]","yellow")
 			else
-				a.hp -= damage
+				a.stats["hp"].setValue(a.stats["hp"].value() - damage)
+				//a.hp -= damage
 				show_damage(a,"[damage]","red")
 
 			//	DeathCheck(m,src)
 		Damage(mob/a,damage)
 			if(a.dead)return
 			if((istype(src,/mob/player)) && (istype(a,/mob/player)))
-				if(a.level < 20 || src.level < 20)
+
+
+				if(a.stats["level"].value() < 20 || src.stats["level"].value() < 20)
 					_message(src,"<font color=gray>PvP will be activated at lvl 20")
 					return
 			if(prob(a.dodge))
@@ -76,18 +79,23 @@ mob
 				return
 			if(prob(src.critical))
 				var/criticaldmg = damage*2
-				a.hp -= criticaldmg
+				a.stats["hp"].setValue(a.stats["hp"].value() - criticaldmg)
+			//	a.hp -= criticaldmg
 				show_damage(a,"[criticaldmg]","yellow")
 			else
-				a.hp -= damage
+				a.stats["hp"].setValue(a.stats["hp"].value() - damage)
+			//	a.hp -= damage
 				show_damage(a,"[damage]","red")
 			if(istype(a,/mob/player))
 				var/mob/player/m = a
 
-				if(a.hp < 1)
+				if(a.stats["hp"].value() < 1)
 					src.money+= m.money
 					m.money = 0
-					src.exp += m.exp
+					src.give_xp(m.stats["level"].xp()) // Is this the experience it gives away if you kill it ?
+
+					// if player kills player money is set to 0 and owner gets targets exphmmm....
+					//This one is a bit tricky. because
 
 				m.WidthTotal()
 				m.GetWidth()

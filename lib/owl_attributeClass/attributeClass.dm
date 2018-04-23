@@ -22,6 +22,8 @@ attribute
 	var/limit = 0   // max is a built-in proc, so don't use it as a var name
 	var/level = 1	// Current level
 	var/xp = 0		//current experience
+	//a bit hard to know how much experience one has, when each stat has it's own experience... :o
+	//but i can use it from the level stat.   level.xp
 	var/xp_next = 100 	// xp for next level
 	var/xp_total = 0	//Total amount of xp required, ever
 	var/limit_gain_rate = 1.9	//How fast it's value increases after leveling /attribute
@@ -54,6 +56,7 @@ attribute
 	proc
 		//here
 		gain_xp(_xp)
+			var/returnvalue = 0
 			//add argument _xp to xp wow so you can set it for each how much to lvl up
 			//Yes, and how fast they can grow in value so i dont need stupid += round( blalbaboost)
 			//Nope
@@ -70,7 +73,11 @@ attribute
 				++level
 				xp -= xp_next
 				xp_next = round(xp_next * xp_gain_rate, 1)// so i dont actually need lvl up proc now ? Sort of, no. i have one here tho
-
+				returnvalue++
+			return returnvalue
+		reset_value()
+			if(value && limit)
+				value = limit
 		//get values
 				//	if this is true ? do this : this otherwise false nice :D yeah. skipping a lot of ifs i al
 		name()	return name ? name : 0
@@ -107,12 +114,12 @@ attribute
 				xp_next = val
 			catch(var/exception/e)
 				world.log << "[e] on [e.file]:[e.line]"
-		setLimit_gain_rate(val)
+		set_limit_gain_rate(val)
 			try
 				limit_gain_rate = val
 			catch(var/exception/e)
 				world.log << "[e] on [e.file]:[e.line]"
-		setXp_gain_rate(val)
+		set_xp_gain_rate(val)
 			try
 				xp_gain_rate = val
 			catch(var/exception/e)

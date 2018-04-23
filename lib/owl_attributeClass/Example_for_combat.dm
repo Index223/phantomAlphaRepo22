@@ -1,4 +1,21 @@
-/*
+#define true TRUE
+#define false FALSE
+
+//This is my example of a combat system
+//Using the attributes.
+//Implementing it to your system can turn out to be a bit wierd. but i will try.
+// I didn't intend for you using it. It is merely an example you can look at to get a grasp of how attributes work.
+mob
+	var
+		respawnTime = 50
+		inCombat = FALSE
+
+	// Just for an example.
+	// To give "regen" attribute to stats, for regen functions to work
+	proc/give_regen()
+		stats += list("regen", new/attribute( "regen", 5, 1, 100, 2, 1.1))
+
+
 
 mob/proc
 	death()
@@ -8,12 +25,13 @@ mob/proc
 		see_invisible = 100
 		deathSight(true)
 		spawn(respawnTime)	src.respawn()
+
 		#ifdef WORLDLOG
-		print(world.log, "[src].death()")
+		world.log <<  "[src].death()"
 		#endif
 obj
 	deathSight
-		icon = 'deathSight.dmi'
+		color = rgb(50,50,50, 50)
 		layer = 7
 		screen_loc = "SOUTHWEST to NORTHEAST"
 
@@ -43,17 +61,19 @@ mob
 			try
 				return stats["stamina"].value() >= stats["stamina"].limit() ? true : false
 			catch(var/exception/e)
-				print(world.log, "[e] at [e.file]:[e.line]")
+				world.log << "[e] at [e.file]:[e.line]"
 			return false
 
 		regenSetStamina()
 			try
 				stats["stamina"].setValue(stats["stamina"].limit)
 			catch(var/exception/e)
-				print(world.log, "[e] at [e.file]:[e.line]")
+				world.log << "[e] at [e.file]:[e.line]"
 			return true
 
 		regen()
+			/*Using stat["regen"]
+			I will include this on top.*/
 
 			combat_regenerating = true
 
@@ -61,7 +81,7 @@ mob
 				while(stats["stamina"].value() < stats["stamina"].limit())
 					var/r = round(stats["regen"].value())
 					stats["stamina"].setValue(stats["stamina"].value()+r)
-					gainXP("regen", 10)
+					give_xp("regen", 10)
 
 					if(regenCheckStamina())
 						return regenSetStamina()
@@ -74,14 +94,14 @@ mob/proc
 		dead = false
 		see_invisible = 0
 		deathSight(false)
-		set_attribute_value("stamina", get_attribute_limit("stamina"))
+		stats["hp"].setValue(stats["hp"].limit())
+
 		#ifdef WORLDLOG
-		print(world.log, "[src].respawn()")
+		world.log <<  "[src].respawn()"
 		#endif
 mob/proc
 	takeDamage(_damage)
-		set_attribute_value("stamina", get_attribute_value("stamina") - _damage)
+		stats["hp"].setValue(stats["hp"].value() - _damage)
 		if(!combat_regenerating) regen()
-		if(get_attribute_value("stamina") <= 0)
+		if(stats["hp"].value() <= 0)
 			death()
-*/

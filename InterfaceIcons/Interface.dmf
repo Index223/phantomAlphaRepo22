@@ -72,7 +72,6 @@ window "TechTree"
 		size = 357x571
 		anchor1 = none
 		anchor2 = none
-		background-color = none
 		is-disabled = true
 		saved-params = ""
 		text = ""
@@ -103,7 +102,6 @@ window "default"
 		size = 912x728
 		anchor1 = none
 		anchor2 = none
-		background-color = none
 		is-default = true
 		saved-params = "pos;size;is-minimized;is-maximized"
 		titlebar = false
@@ -122,7 +120,6 @@ window "default"
 		font-size = 8
 		font-style = "bold"
 		text-color = #ffff64
-		background-color = none
 		is-disabled = true
 		saved-params = ""
 		text = "              The phantom of the future v0.1"
@@ -139,7 +136,6 @@ window "default"
 		font-size = 8
 		font-style = "bold"
 		text-color = #ffffff
-		background-color = none
 		is-visible = false
 		saved-params = "is-checked"
 		text = "Report"
@@ -151,7 +147,6 @@ window "default"
 		size = 64x64
 		anchor1 = none
 		anchor2 = none
-		background-color = none
 		saved-params = ""
 		text = ""
 		image = 'InterfaceIcons\\BannerIcon.dmi'
@@ -165,7 +160,6 @@ window "default"
 		font-size = 8
 		font-style = "bold"
 		text-color = #f7f7f7
-		background-color = none
 		is-visible = false
 		saved-params = "is-checked"
 		text = "Drop"
@@ -181,7 +175,6 @@ window "default"
 		font-size = 8
 		font-style = "bold"
 		text-color = #ffffff
-		background-color = none
 		is-visible = false
 		saved-params = "is-checked"
 		text = "AFK"
@@ -197,7 +190,6 @@ window "default"
 		font-size = 8
 		font-style = "bold"
 		text-color = #f7f7f7
-		background-color = none
 		is-visible = false
 		saved-params = "is-checked"
 		text = "PM"
@@ -213,7 +205,6 @@ window "default"
 		font-size = 8
 		font-style = "bold"
 		text-color = #f7f7f7
-		background-color = none
 		is-visible = false
 		saved-params = "is-checked"
 		text = "Who"
@@ -233,7 +224,6 @@ window "default"
 		size = 25x21
 		anchor1 = none
 		anchor2 = none
-		background-color = none
 		saved-params = "is-checked"
 		text = ""
 		image = 'InterfaceIcons\\Button2.dmi'
@@ -244,7 +234,6 @@ window "default"
 		size = 600x400
 		anchor1 = none
 		anchor2 = none
-		background-color = none
 		is-visible = false
 		saved-params = "splitter"
 		left = "Quester"
@@ -255,7 +244,6 @@ window "default"
 		size = 400x400
 		anchor1 = none
 		anchor2 = none
-		background-color = none
 		is-visible = false
 		saved-params = "splitter"
 		left = "QuestWindow"
@@ -268,7 +256,6 @@ window "default"
 		anchor2 = none
 		font-family = "Calibri"
 		text-color = #ffffff
-		background-color = none
 		is-visible = false
 		saved-params = "is-checked"
 		text = "Submit"
@@ -311,7 +298,6 @@ window "default"
 		font-size = 8
 		font-style = "bold"
 		text-color = #ffffff
-		background-color = none
 		is-visible = false
 		saved-params = "is-checked"
 		text = "World"
@@ -323,7 +309,6 @@ window "default"
 		size = 206x48
 		anchor1 = none
 		anchor2 = none
-		background-color = none
 		is-visible = false
 		saved-params = "splitter"
 		left = "stats"
@@ -334,7 +319,6 @@ window "default"
 		size = 39x21
 		anchor1 = none
 		anchor2 = none
-		background-color = none
 		saved-params = "is-checked"
 		text = ""
 		image = 'InterfaceIcons\\ExitButton.dmi'
@@ -348,7 +332,6 @@ window "inventory"
 		size = 264x363
 		anchor1 = none
 		anchor2 = none
-		background-color = none
 		is-visible = false
 		saved-params = "pos;size;is-minimized;is-maximized"
 		title = "Inventory"
@@ -362,7 +345,6 @@ window "inventory"
 		size = 248x28
 		anchor1 = none
 		anchor2 = none
-		background-color = none
 		is-disabled = true
 		saved-params = ""
 		text = ""
@@ -377,7 +359,6 @@ window "inventory"
 		font-size = 12
 		font-style = "bold"
 		text-color = #ffffff
-		background-color = none
 		saved-params = ""
 		text = "  \n\n\n\n\n\n\n\n\n\n\n\n       1000000                                      99               99"
 		image = 'InterfaceIcons\\BagBackground.dmi'
@@ -400,7 +381,6 @@ window "inventory"
 		size = 16x28
 		anchor1 = none
 		anchor2 = none
-		background-color = none
 		saved-params = ""
 		text = ""
 		image = 'InterfaceIcons\\BagBackgroundrightfix.dmi'
@@ -410,7 +390,6 @@ window "inventory"
 		size = 18x18
 		anchor1 = none
 		anchor2 = none
-		background-color = none
 		saved-params = "is-checked"
 		text = ""
 		image = 'InterfaceIcons\\BagBagroundExit.dmi'
@@ -424,6 +403,7 @@ window "stats"
 		size = 206x48
 		anchor1 = none
 		anchor2 = none
+		background-color = none
 		saved-params = "pos;size;is-minimized;is-maximized"
 		titlebar = false
 		statusbar = false
@@ -443,6 +423,7 @@ window "stats"
 		font-size = 8
 		font-style = "bold"
 		text-color = #ffffff
+		background-color = none
 		saved-params = ""
 		text = ""
 		image = 'InterfaceIcons\\ExpBar.dmi'
@@ -454,6 +435,7 @@ window "stats"
 		size = 224x15
 		anchor1 = none
 		anchor2 = none
+		background-color = none
 		saved-params = ""
 		text = ""
 		image-mode = stretch
@@ -467,6 +449,7 @@ window "stats"
 		font-size = 8
 		font-style = "bold"
 		text-color = #ffffff
+		background-color = none
 		saved-params = ""
 		text = ""
 		image = 'InterfaceIcons\\Energy.dmi'
@@ -482,6 +465,7 @@ window "stats"
 		font-size = 8
 		font-style = "bold"
 		text-color = #ffffff
+		background-color = none
 		saved-params = ""
 		text = ""
 		image = 'InterfaceIcons\\mana.dmi'
@@ -497,6 +481,7 @@ window "stats"
 		font-size = 8
 		font-style = "bold"
 		text-color = #ffffff
+		background-color = none
 		saved-params = ""
 		text = ""
 		image = 'InterfaceIcons\\healt.dmi'
@@ -766,7 +751,6 @@ window "QuestWindow"
 		size = 400x400
 		anchor1 = none
 		anchor2 = none
-		background-color = none
 		border = sunken
 		saved-params = "pos;size;is-minimized;is-maximized"
 		titlebar = false
@@ -806,7 +790,6 @@ window "QuestWindow"
 		size = 64x64
 		anchor1 = none
 		anchor2 = none
-		background-color = none
 		saved-params = ""
 		text = ""
 		image-mode = stretch
@@ -964,7 +947,6 @@ window "Quester"
 		font-size = 6
 		font-style = "bold"
 		text-color = #ffffff
-		background-color = none
 		saved-params = "is-checked"
 		text = "Complete"
 		image = 'InterfaceIcons\\Button122.png'
