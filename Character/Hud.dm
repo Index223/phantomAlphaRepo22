@@ -1,6 +1,11 @@
 obj
 	CharacterHud
 		icon='Hud.dmi'
+		var/mob/owner
+
+		New(mob/m)
+			..()
+			owner = m
 
 		h1
 			icon_state="1"
@@ -34,28 +39,37 @@ obj
 			icon_state="14"
 			screen_loc="12:20,2:-20"
 			New()
-				if(usr)
-					maptext_y = 16
-					maptext_x = 44
-					maptext="<b>[usr.str]"
+				if(owner)
+					try
+						if(!usr.stats["strengt"]) world.log << "could not find stats: strength"; return 0
+						maptext_y = 16
+						maptext_x = 44
+						maptext="<b>[owner.stats["strength"].value()]"
+					catch(var/exception/e) world.log << "[e] at [e.file] : [e.line]"
 		h15
 			layer=5
 			icon_state="15"
 			screen_loc="12:20,2:-38"
 			New()
-				if(usr)
-					maptext_y = 16
-					maptext_x = 44
-					maptext="<b>[usr.magic]"
+				if(owner)
+					try
+						if(!usr.stats["magic"])  world.log << "could not find stats: mamaggic"; return 0
+						maptext_y = 16
+						maptext_x = 44
+						maptext="<b>[owner.stats["magic"].value()]"
+					catch(var/exception/e) world.log << "[e] at [e.file]:[e.line]"
 		h16
 			layer=5
 			icon_state="16"
 			screen_loc="12:20,2:-54"
-			New()
-				if(usr)
-					maptext_y = 16
-					maptext_x = 44
-					maptext="<b>[usr.def]"
+			New() // i think usr = null yeah... thats what i'm afraid of
+				if(owner)
+					try
+						if(!usr.stats["defence"])  world.log << "could not find stats: defence"; return 0
+						maptext_y = 16
+						maptext_x = 44
+						maptext="<b>[owner.stats["defence"].value()]"
+					catch(var/exception/e) world.log << "[e] at [e.file]:[e.line]"
 		stats
 			icon='TechTree.dmi'
 			icon_state ="stats"
@@ -114,6 +128,7 @@ mob
 	player
 		proc
 			StartHud()
+
 				src.screenobjects +=list(new/obj/CharacterHud/h1,
 										new/obj/CharacterHud/h2,
 										new/obj/CharacterHud/h3,
@@ -123,9 +138,15 @@ mob
 										new/obj/CharacterHud/h7,
 										new/obj/CharacterHud/h8,
 										new/obj/CharacterHud/h10,
-										new/obj/CharacterHud/h14,
-										new/obj/CharacterHud/h15,
-										new/obj/CharacterHud/h16,
+										new/obj/CharacterHud/h14(src),
+										new/obj/CharacterHud/h15(src),
+										new/obj/CharacterHud/h16(src),
 										new/obj/CharacterHud/stats,
 										new/obj/CharacterHud/quest,
 										new/obj/CharacterHud/Bag)
+			/*	var/obj/CharacterHud/h14/a = locate() in src.client.screen
+				if(a)
+					a.maptext_y = 16
+					a.maptext_x = 44
+					a.maptext="<b>[src.stats["strength"].value()]"
+*/

@@ -48,7 +48,7 @@ mob/var
 mob/proc
 	expgain(expz as num,target)
 		if(!partycheck(src,expz))
-			exp += expz
+			give_xp(expz) //? it should be fine yea
 	goldgain(zenniz as num,target)
 		if(!partycheck(src,null,zenniz))
 			money += zenniz
@@ -171,8 +171,8 @@ party
 
 		requestjoin(mob/wantstojoin)
 			if(members.len>=limit)               {_message(wantstojoin,"<b><font color = green>That party is currently full.</font></b>");wantstojoin.partydatum=null;return}
-			if(wantstojoin.level<usr.level-10)       {_message(wantstojoin,"<b><font color = green>You are under that parties level requirement.</font></b>");wantstojoin.partydatum=null;return}
-			if(wantstojoin.level>usr.level+10)       {_message(wantstojoin,"<b><font color = green>You are over that parties level restriction.</font></b>");wantstojoin.partydatum=null;return}
+			if(wantstojoin.stats["level"].value()<(usr.stats["level"].value()-10))       {_message(wantstojoin,"<b><font color = green>You are under that parties level requirement.</font></b>");wantstojoin.partydatum=null;return}
+			if(wantstojoin.stats["level"].value()>(usr.stats["level"].value()+10))       {_message(wantstojoin,"<b><font color = green>You are over that parties level restriction.</font></b>");wantstojoin.partydatum=null;return}
 			if(wantstojoin.partydatum!="pending"){_message(wantstojoin,"<b><font color = green>You are already in a party.</font></b>");return}
 			wantstojoin << "<b><font color = green>Your request has been sent to the leader of the party."
 			switch(alert(leader,"[wantstojoin] wants to join the party, will you let them in?","Member request","Yes","No"))
@@ -198,9 +198,9 @@ party
 				members << output(members[++n],"Partywindow.peoplegrid:[++num],[col]")
 				var/mob/player/m=members[n]
 				if(m)
-					members << output("LEVEL: [m.level]\n ROLL: [m.element]","Partywindow.peoplegrid:[++num],[col]")
+					members << output("LEVEL: [m.stats["level"].level]\n ROLL: [m.element]","Partywindow.peoplegrid:[++num],[col]")
 				col++
-				if(num>1)num=0
+				if(num>1)num=0 // did we :O haha :D so this should "should" be done now :D hahaha yeah! probably a million bugs tho
 
 		redobuttons(mob/oldldr,mob/newldr)
 			if(!GRAPHICAL_DISPLAY)return
@@ -230,9 +230,15 @@ proc/partycheck(mob/ref,exp,aur)
 			for(var/mob/o in list)
 				spawn(1)
 					if(o)
-						o.exp+=exp
+					/*
+					Gaining Experience needs to be a bit more specific.
+					It needs to describe which stat it give sexperience to.
+					*/
+						o.give_xp(exp)
+					//	o.exp+=exp
 					//	spawn(1)if(o)o.Level_Up(/*Phat T*/) //
-						spawn(4)if(o)o.show_damage3(o,"Exp + [exp]","aqua")
+						spawn(4)if(o)o.show_damage3(o,"Exp + [exp]","aqua") // I am back :D
+						//Nice, look
 
 			return 1
 		if(aur)
@@ -305,9 +311,10 @@ mob
 			if(p.members.len>=p.limit){_message(src,"<b><font color = green>Your party is currently full.</font></b>");alertopen=0;return}
 
 
-			if(x.level<src.level-10){_message(src,"<b><font color = green>[x] is under your party's level requirement.</font></b>");alertopen=0;return}
+			// just if x level is 10 times bigger than src he cant join party oh.. or the other way around haha xD
+			if(src.stats["level"].value() < (x.stats["level"].value()+10)){_message(src,"<b><font color = green>[x] is under your party's level requirement.</font></b>");alertopen=0;return}
 
-			if(x.level>src.level+10){_message(src,"<b><font color = green>[x] is over your party's level restriction.</font></b>");alertopen=0;return}
+			if(x.stats["level"].value()>(src.stats["level"].value()+10)){_message(src,"<b><font color = green>[x] is over your party's level restriction.</font></b>");alertopen=0;return}
 
 
 

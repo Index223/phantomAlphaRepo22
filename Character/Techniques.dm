@@ -50,8 +50,8 @@ mob
 					if(istype(M,/mob/Enemy))
 						var/mob/Enemy/g = M
 						g.foundTarget(m)
-					var/power = m.str*rand(25.1,34.9)
-					var/defense = M.def*2
+					var/power = m.stats["strength"].value()*rand(25.1,34.9)
+					var/defense = M.stats["defence"].value()*2
 					var/_damage = round(power/defense)
 
 					m.Damage(M,_damage)

@@ -98,14 +98,14 @@ mob
 			src.client.screen += new/obj/TechTree/tc90
 			src.client.screen += new/obj/TechTree/tc91
 			src.client.screen += new/obj/TechTree/tc92
-			src.client.screen += new/obj/TechTree/text0
+			src.client.screen += new/obj/TechTree/text0(src)
 			src.client.screen += new/obj/TechTree/text1
 			src.client.screen += new/obj/TechTree/text2
-			src.client.screen += new/obj/TechTree/text1str
+			src.client.screen += new/obj/TechTree/text1str(src)
 			src.client.screen += new/obj/TechTree/addstr
-			src.client.screen += new/obj/TechTree/text1mag
+			src.client.screen += new/obj/TechTree/text1mag(src)
 			src.client.screen += new/obj/TechTree/addmag
-			src.client.screen += new/obj/TechTree/text1def
+			src.client.screen += new/obj/TechTree/text1def(src)
 			src.client.screen += new/obj/TechTree/adddef
 			src.client.screen += new/obj/TechTree/text1critical
 			src.client.screen += new/obj/TechTree/addcritical
@@ -128,6 +128,11 @@ mob
 				b.loc=null
 obj
 	TechTree
+		var/mob/owner
+
+		New(mob/m)
+			..()
+			owner = m
 		icon='NewTechTree.dmi'
 		tc1
 			icon_state ="1"
@@ -412,17 +417,18 @@ obj
 			screen_loc="11,12"
 			layer=OBJ_LAYER+1
 			New()
-				if(usr)
+				if(owner)
 					maptext_width=256
 					maptext_height=256
 					maptext_y = 16
 					maptext_x = 8
-					maptext="<font family=Comic Sans MS><font color=white><b>Name:</b> [usr.name] <b>LvL:</b> [usr.level]"
+					maptext="<font family=Comic Sans MS><font color=white><b>Name:</b> [owner.name] <b>LvL:</b> [owner.stats["level"].value()]"
 		text1
 			icon=null
 			icon_state ="text1"
 			screen_loc="6:-16,10:16"
 			New()
+
 				maptext_width=256
 				maptext_height=256
 				maptext_y = 16
@@ -445,11 +451,12 @@ obj
 			icon=null
 			layer=OBJ_LAYER+1
 			New()
-				maptext_width=256
-				maptext_height=256
-				maptext_y = -6
-				maptext_x = -16
-				maptext="<b><font family=Calibri>Str: [usr.str]<font color=#c266ff> (+[usr.bonusstr])"
+				if(owner)
+					maptext_width=256
+					maptext_height=256
+					maptext_y = -6
+					maptext_x = -16
+					maptext="<b><font family=Calibri>Str: [owner.stats["strength"].value()]<font color=#c266ff> (+[owner.stats["bonusstr"].value()])"
 
 
 		addstr
@@ -469,11 +476,13 @@ obj
 				set src in usr
 				if(usr.battlepoints > 0)
 					usr.battlepoints --
-					usr.str ++
+					usr.stats["strength"].setLimit((usr.stats["strength"].limit()+1)) // What did this originally dop ?
+					// you lose battle point and gain str point ooh
+					// In this instance, do you want it to directly affect it's value, or just give strength experience? ye directly
 
 					var/obj/TechTree/text1str/m = locate() in usr.client.screen
 					if(m)
-						m.maptext="<b><font family=Calibri>Str: [usr.str]<font color=#c266ff> (+[usr.bonusstr])"
+						m.maptext="<b><font family=Calibri>Str: [usr.stats["strength"].value()]<font color=#c266ff> (+[usr.stats["bonusstr"].value()])"
 
 					var/obj/TechTree/text2/A = locate() in usr.client.screen
 					if(A)
@@ -481,7 +490,7 @@ obj
 
 					var/obj/CharacterHud/h14/h= locate() in usr.client.screen
 					if(h)
-						h.maptext="<b>[usr.str]"
+						h.maptext="<b>[usr.stats["strength"].value()]"
 				else
 					src.icon_state="Add-Locked"
 
@@ -501,12 +510,15 @@ obj
 			screen_loc="5,9:3"
 			icon=null
 			layer=OBJ_LAYER+1
+
 			New()
-				maptext_width=256
-				maptext_height=256
-				maptext_y = 16
-				maptext_x = -16
-				maptext="<b><font family=Calibri>Mag: [usr.magic]<font color=#c266ff> (+[usr.bonusmagic])"
+				if(owner)
+					maptext_width=256
+					maptext_height=256 //  1 sec go on x
+					maptext_y = 16
+					maptext_x = -16
+					maptext="<b><font family=Calibri>Mag: [owner.stats["magic"].value()]<font color=#c266ff> (+[owner.stats["bonusmagic"].value()])"
+
 		addmag
 			icon_state ="add"
 			screen_loc="7:13,9:16"
@@ -523,18 +535,18 @@ obj
 				set src in usr
 				if(usr.battlepoints > 0)
 					usr.battlepoints --
-					usr.magic ++
+					usr.stats["magic"].setLimit((usr.stats["magic"].limit()+1))
 
-					var/obj/TechTree/text1mag/m = locate() in usr.client.screen
+					var/obj/TechTree/text1mag/m = locate() in usr.client.screen // ??
 					if(m)
-						m.maptext="<b><font family=Calibri>Mag: [usr.magic]<font color=#c266ff> (+[usr.bonusmagic])"
+						m.maptext="<b><font family=Calibri>Mag: [usr.stats["magic"].value()]<font color=#c266ff> (+[usr.stats["bonusmagic"].value()])"
 
 					var/obj/TechTree/text2/A = locate() in usr.client.screen
 					if(A)
 						A.maptext="<b><font family=Calibri>[usr.battlepoints]"
 					var/obj/CharacterHud/h15/h = locate() in usr.client.screen
 					if(h)
-						h.maptext="<b>[usr.magic]"
+						h.maptext="<b>[usr.stats["magic"].value()]"
 				else
 					src.icon_state="Add-Locked"
 					var/obj/TechTree/adddef/a = locate() in usr.client.screen
@@ -550,11 +562,12 @@ obj
 			icon=null
 			layer=OBJ_LAYER+1
 			New()
-				maptext_width=256
-				maptext_height=256
-				maptext_y = 16
-				maptext_x = -16
-				maptext="<b><font family=Calibri>Def: [usr.def]<font color=#c266ff> (+[usr.bonusdef])"
+				if(owner)
+					maptext_width=256
+					maptext_height=256
+					maptext_y = 16
+					maptext_x = -16
+					maptext="<b><font family=Calibri>Def: [owner.stats["defence"].value()]<font color=#c266ff> (+[owner.stats["bonusdef"].value()])"
 		adddef
 			icon_state ="add"
 			screen_loc="7:13,9:-10"
@@ -572,17 +585,17 @@ obj
 				set src in usr
 				if(usr.battlepoints > 0)
 					usr.battlepoints --
-					usr.def ++
+					usr.stats["defence"].setLimit((usr.stats["defence"].limit()+1))
 
 					var/obj/TechTree/text1def/m = locate() in usr.client.screen
 					if(m)
-						m.maptext="<b><font family=Calibri>Def: [usr.def]<font color=#c266ff> (+[usr.bonusdef])"
+						m.maptext="<b><font family=Calibri>Def: [usr.stats["defence"].value()]<font color=#c266ff> (+[usr.stats["bonusdef"].value()])"
 					var/obj/TechTree/text2/A = locate() in usr.client.screen
 					if(A)
 						A.maptext="<b><font family=Calibri>[usr.battlepoints]"
 					var/obj/CharacterHud/h16/h= locate() in usr.client.screen
 					if(h)
-						h.maptext="<b>[usr.def]"
+						h.maptext="<b>[usr.stats["defence"].value()]"
 				else
 					src.icon_state="Add-Locked"
 					var/obj/TechTree/addmag/a = locate() in usr.client.screen

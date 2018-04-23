@@ -22,7 +22,7 @@ mob
 
 			"energy" = new/attribute("energy", 5, 1, 100, 2, 1.1),
 			"ki" = new/attribute("ki" , 5, 1, 100, 2, 1.1),
-			"deflect" = new/attribute("deflect" , 5, 1, 100, 2, 1.1),
+
 
 
 			//Don't need "bonus" attributes.
@@ -32,23 +32,24 @@ mob
 			"bonusmag" = new/attribute("bonusmag" , 5, 1, 100, 2, 1.1),
 			"bonusdef" = new/attribute("bonusdef" , 5, 1, 100, 2, 1.1))
 
-
-		attribute_give_xp(attribute, amount)
-			/*
-			This is an overhead function, that allows us to call to an attribute for it it gain_xp()
-			Don't use this specific proc elsewhere. This is only used by give_xp(): Line 47
-			*/
-			var/attribute/a = stats && stats[attribute]
-			if(a) a.gain_xp(amount)
-			else
-				throw EXCEPTION("[src.name].give_xp() : could not find [attribute] in [src.name]/var/list/stats \n file: Attributes.dm, Line 125")
-
 		/*Then we have the actual proc that is used to grant experience to a player*/
-		give_xp(attr, amount)
-			attribute_give_xp(attr, amount)
-			attribute_give_xp("level", amount) //Give level XP at all times, so you don't have to deal with giving level experience elsewhere
-			attribute_give_xp("stamina", amount) //stamina could grow on it's own as you level up.
+		//this is the whole level section.
 
+		give_xp(amount)
+			var/returnLevelUpIndicator = FALSE
+			//give experience to an individual stat
+
+			//static stats that gains experience no matter what.
+
+			while(stats["strength"].gain_xp(amount) > 0) returnLevelUpIndicator = TRUE
+			while(stats["defence"].gain_xp(amount) > 0) returnLevelUpIndicator = TRUE
+			while(stats["magic"].gain_xp(amount) > 0) returnLevelUpIndicator = TRUE
+			while(stats["level"].gain_xp(amount) > 0) returnLevelUpIndicator = TRUE
+			while(stats["hp"].gain_xp(amount) > 0) returnLevelUpIndicator = TRUE
+			while(stats["ki"].gain_xp(amount) > 0) returnLevelUpIndicator = TRUE
+			while(stats["energy"].gain_xp(amount) > 0) returnLevelUpIndicator = TRUE
+			if(returnLevelUpIndicator == TRUE) Lvlupindicator()
 			/*
-			This could be changable later.
+			This could be changable later. what is lvl up indicator :O ?
+			Ops
 			*/

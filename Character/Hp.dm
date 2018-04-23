@@ -5,10 +5,10 @@ mob/proc
 		width_total=winget(src,"default.stats","size")
 		width_total=text2num(copytext(width_total,1,findtext(width_total,"x")))
 	GetWidth()
-		pl_width=src.hp * width_total / src.maxhp
-		ki_width=src.ki * width_total / src.maxki
-		en_width=src.energy * width_total / src.maxenergy
-		exp_width=src.exp * width_total / src.maxexp
+		pl_width=src.stats["hp"].value() * width_total / src.stats["hp"].limit()
+		ki_width=src.stats["ki"].value() * width_total / src.stats["ki"].limit()
+		en_width=src.stats["energy"].value() * width_total / src.stats["energy"].limit()
+		exp_width=src.stats["level"].xp() * width_total / src.stats["level"].xp_next()
 		if(pl_width<1)
 			pl_width=1
 		if(ki_width<1)
@@ -56,22 +56,19 @@ mob/proc
 		if(src.exp<0)
 			src.exp=1
 		*/
-		if(src.hp>=src.maxhp)
-			src.hp=src.maxhp
-		if(src.ki>=src.maxki)
-			src.ki=src.maxki
-		if(src.energy>=src.maxenergy)
-			src.energy=src.maxenergy
-		if(src.exp>=src.maxexp)
-			src.exp=src.maxexp
-		if(src.hp<0)
-			src.hp=1
-		if(src.ki<0)
-			src.ki=1
-		if(src.energy<0)
-			src.energy=1
-		if(src.exp<0)
-			src.exp=1
+		if(src.stats["hp"].value() >= src.stats["hp"].limit())
+			src.stats["hp"].reset_value()
+		if(src.stats["ki"].value() >= src.stats["ki"].limit())
+			src.stats["ki"].reset_value()
+		if(src.stats["energy"].value() >=src.stats["energy"].limit())
+			src.stats["energy"].reset_value()
+// i dont think we dont need xD ye
+		if(src.stats["hp"].value()<0)
+			src.stats["hp"].setValue(0)//setValue(argument) < yeeh :D
+		if(src.stats["ki"].value() <0)
+			src.stats["ki"].setValue(0)
+		if(src.stats["energy"].value() <0)
+			src.stats["energy"].setValue(0)
 mob/var
 
 	width_total=0
@@ -82,7 +79,9 @@ mob/var
 
 mob
 	proc/UpdateHud()
-		winset(src,"stats.hp","size=[src.pl_width]x12; text=[src.hp]")
-		winset(src,"stats.ki","size=[src.ki_width]x12; text=[src.ki]")
-		winset(src,"stats.energy","size=[src.en_width]x12; text=[src.energy]")
-		winset(src,"stats.exp","size=[src.exp_width]x12; text=[src.exp]")
+		winset(src,"stats.hp","size=[src.pl_width]x12; text=[src.stats["hp"].value()]")
+		winset(src,"stats.ki","size=[src.ki_width]x12; text=[src.stats["ki"].value()]")
+		winset(src,"stats.energy","size=[src.en_width]x12; text=[src.stats["energy"].value()]")
+		//this! important:   you can use interface experience bars to scale of stats["level"].xp() & stats["level"].xp_next()
+		// for bars i am using interface ? yeah thats fine. but here
+		winset(src,"stats.exp","size=[src.exp_width]x12; text=[src.stats["level"].xp()]")

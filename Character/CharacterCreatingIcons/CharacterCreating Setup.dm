@@ -246,7 +246,7 @@ mob
 					L.screen_loc="2:32,2:16"
 					L.maptext="<b><center align=top><font color=red><font family=Calibri> <font size=3>WELCOME TO\n<font size=5>[world.name]<font size=3><font color=yellow>\n\n\n - Walk with arrows\n\n - Q  normal attack (punch)\n\n -Interact with 'X' button\n\n - You can always contact Admins for help!"
 
-					spawn(100)
+					spawn(1)//100)
 
 
 						if(m)
@@ -263,7 +263,17 @@ mob
 							new_mob.overlays = new_mob.overlayslist
 							new_mob.element = m.element
 							new_mob.Slot = m.Slot
+
+
+							new_mob.give_stats() // otherwise it would duplicate. ok nice. and there is another parameter.
+							//if you choose a class. you need to make sure they get the correct fdshfjds
+							new_mob.stats_element_limit_gain()// ?? xD prob not
+
+						//	new_mob = ?? jsut copy
+
+
 							new_mob.StartHud()
+
 							new_mob.StartHotkeys()
 							m.client.eye = new_mob
 							new_mob.loc=locate(68,131,1)
