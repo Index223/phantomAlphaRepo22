@@ -18,6 +18,44 @@ mob/proc
 		if(exp_width<1)
 			exp_width=1
 	Check()
+		/*
+		UPDATE ON THE WORK:
+		This needs a ton of rework. there are functions that needs to be changed,
+		some removed. Like, the stat attributes already work sort of on it's own.
+		So we don't have to deal with ALOT of the functions you have atm.
+
+		I also need to compare with my own game to check which functions i have and don't have.
+		which one is needed. Just so i can get this over with fast.
+
+
+
+		I just realized
+		Don't even need this.rofl ?
+		well maybe, let me check.
+
+		 yeah, we do.
+		 i did something on my own game, and i confused myself
+
+		if(stats["hp"].value() >= stats["hp"].limit())
+
+		if(stats["ki"].value() >= stats["ki"].limit())
+
+		if(stats["hp"].value() >= stats["hp"].limit())
+
+
+			// This we don't need.
+			//each attribute level up on it's own.
+		if(stats["xp"].value()>=src.maxexp)
+			src.exp=src.maxexp
+		if(src.hp<0)
+			src.hp=1
+		if(src.ki<0)
+			src.ki=1
+		if(src.energy<0)
+			src.energy=1
+		if(src.exp<0)
+			src.exp=1
+		*/
 		if(src.hp>=src.maxhp)
 			src.hp=src.maxhp
 		if(src.ki>=src.maxki)
