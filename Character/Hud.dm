@@ -38,18 +38,15 @@ obj
 			layer=5
 			icon_state="14"
 			screen_loc="12:20,2:-20"
-			New()
-				if(owner)
-					try
-						if(!usr.stats["strengt"]) world.log << "could not find stats: strength"; return 0
-						maptext_y = 16
-						maptext_x = 44
-						maptext="<b>[owner.stats["strength"].value()]"
-					catch(var/exception/e) world.log << "[e] at [e.file] : [e.line]"
+			maptext_y = 16
+			maptext_x = 44
+
 		h15
 			layer=5
 			icon_state="15"
 			screen_loc="12:20,2:-38"
+			maptext_x = 44
+			maptext_y = 16
 			New()
 				if(owner)
 					try
@@ -62,6 +59,8 @@ obj
 			layer=5
 			icon_state="16"
 			screen_loc="12:20,2:-54"
+			maptext_x = 44
+			maptext_y = 16
 			New() // i think usr = null yeah... thats what i'm afraid of
 				if(owner)
 					try
@@ -144,9 +143,14 @@ mob
 										new/obj/CharacterHud/stats,
 										new/obj/CharacterHud/quest,
 										new/obj/CharacterHud/Bag)
-			/*	var/obj/CharacterHud/h14/a = locate() in src.client.screen
+				var/obj/CharacterHud/h14/a = locate() in src.screenobjects
 				if(a)
-					a.maptext_y = 16
-					a.maptext_x = 44
 					a.maptext="<b>[src.stats["strength"].value()]"
-*/
+
+				var/obj/CharacterHud/h15/b = locate() in src.screenobjects
+				if(b)
+					b.maptext="<b>[src.stats["magic"].value()]"
+
+				var/obj/CharacterHud/h16/c = locate() in src.screenobjects
+				if(c)
+					c.maptext="<b>[src.stats["defence"].value()]"

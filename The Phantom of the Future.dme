@@ -29,7 +29,6 @@
 
 // BEGIN_INCLUDE
 #include "_predefinitions.dm"
-#include "Character\Attributes.dm"
 #include "Character\Character vars.dm"
 #include "Character\Chat.dm"
 #include "Character\Clothes.dm"
