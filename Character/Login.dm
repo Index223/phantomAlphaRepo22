@@ -24,23 +24,13 @@ mob
 		bounds  = "16,1 to 32,46"
 
 		Login()
-		//	spawn move_loop()
-
-
 			src.client.screen = null
-
-
 			src.client.screen = src.screenobjects
 
 			src.overlays.Cut()
 			src.overlays += src.overlayslist
 
-
-
-
 			src.client.screen += new/obj/cpu_display()
-
-
 
 			src.density=1
 			src.layer = MOB_LAYER

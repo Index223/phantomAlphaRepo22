@@ -47,9 +47,9 @@ mob
 
 
 				for(var/mob/M in obounds(m,dx,dy))
-				/*	if(istype(M,/mob/Enemy))
+					if(istype(M,/mob/Enemy))
 						var/mob/Enemy/g = M
-						g.foundTarget(m)*/
+						g.foundTarget(m)
 					var/power = m.str*rand(25.1,34.9)
 					var/defense = M.def*2
 					var/_damage = round(power/defense)
