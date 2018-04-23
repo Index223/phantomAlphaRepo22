@@ -10,9 +10,9 @@ PACKAGE_DME_NAME: C:\Users\Rudi\Desktop\One Strike\The Phantom of the Future\The
 LAST_COMPILE_VERSION: 511.1385
 PACKAGE_TYPE: 0
 PACKAGE_DME_START: 
-WINDOW: lib\owl_attributeClass\attributeClass.dm;Character\Attributes.dm;Character\Hud.dm;Character\Techniques.dm;Character\CharacterCreatingIcons\Character Selection.dm;Character\CharacterCreatingIcons\CharacterCreating Setup.dm;Character\TechTree.dm;Mapping\Map.dmm;Character\Character vars.dm;Character\Hp.dm;Character\Hotkeys.dmi;Character\LevelUp.dm;Coding\Party.dm;lib\owl_attributeClass\Functions.dm;lib\owl_attributeClass\Example_for_combat.dm;Character\Damage.dm
+WINDOW: lib\owl_attributeClass\attributeClass.dm;Character\Attributes.dm;Character\Hud.dm;Character\Techniques.dm;Character\CharacterCreatingIcons\Character Selection.dm;Character\CharacterCreatingIcons\CharacterCreating Setup.dm;Character\TechTree.dm;The Phantom of the Future.dme
 PACKAGE_DME_INFO: 
-FILE: lib\owl_attributeClass\Example_for_combat.dm
+FILE: The Phantom of the Future.dme
 PACKAGE_DMB_NAME: C:\Users\Rudi\Desktop\One Strike\The Phantom of the Future\The Phantom of the Future.zip
 PACKAGE_DME_DEMO: 
 */
