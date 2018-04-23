@@ -35,7 +35,12 @@ mob
 					src.level ++
 					src.techpoints +=3
 					src.battlepoints += 3
-					src.Lvlupindicator(/*Phat T*/)
+					src.Lvlupindicator(/*Phat T*/) // meeeh
+					/*
+					It was big and messy. and i felt i wanted to instroduce something new. worked on it for a while tbh. cause i didn't know how
+					to make it work. Then build 512 came. <3 list[].functionFromListDatum() oh but this is rly nice i can avoid my ugly lvl up system now
+					Y
+					*/
 
 					if(src)
 						src.leveling=0

@@ -129,18 +129,3 @@ mob
 										new/obj/CharacterHud/stats,
 										new/obj/CharacterHud/quest,
 										new/obj/CharacterHud/Bag)
-			/*	src.screenobjects += new/obj/CharacterHud/h2
-				src.screenobjects += new/obj/CharacterHud/h3
-				src.screenobjects += new/obj/CharacterHud/h4
-				src.screenobjects += new/obj/CharacterHud/h5
-				src.screenobjects += new/obj/CharacterHud/h6
-				src.screenobjects += new/obj/CharacterHud/h7
-				src.screenobjects += new/obj/CharacterHud/h8
-				src.screenobjects += new/obj/CharacterHud/h10
-				src.screenobjects += new/obj/CharacterHud/h14
-				src.screenobjects += new/obj/CharacterHud/h15
-				src.screenobjects += new/obj/CharacterHud/h16
-				src.screenobjects += new/obj/CharacterHud/stats
-				src.screenobjects += new/obj/CharacterHud/quest
-				src.screenobjects += new/obj/CharacterHud/Bag
-*/

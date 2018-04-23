@@ -37,27 +37,45 @@ attribute
 		src.limit_gain_rate = limit_gain_rate
 		src.xp_gain_rate = xp_gain_rate
 
+	/*
+
+	OK WOW MAN THIS IS NICE
+
+	NOW I FINNALY GET IT WOW
+
+
+	Yeah, so:
+
+	limit = max value, i.e :   	maxhp
+	value = current value :		hp
+
+	*/
+
 	proc
+		//here
 		gain_xp(_xp)
-			//add argument _xp to xp
+			//add argument _xp to xp wow so you can set it for each how much to lvl up
+			//Yes, and how fast they can grow in value so i dont need stupid += round( blalbaboost)
+			//Nope
 			xp += _xp
 			xp_total += _xp
 
 			. = level
-			while(xp >= xp_next && level < LEVELCAP)
+			while(xp >= xp_next && level < LEVELCAP)//This is it
 				//this increases limit/value.
 				//round(level * limit_gain_rate) makes it increase faster at higher levels.
 				//It scales exponentially
-				limit += round(level * limit_gain_rate)
+				limit += round(level * limit_gain_rate) //and this sets
 				value = limit
 				++level
 				xp -= xp_next
-				xp_next = round(xp_next * xp_gain_rate, 1)
+				xp_next = round(xp_next * xp_gain_rate, 1)// so i dont actually need lvl up proc now ? Sort of, no. i have one here tho
 
 		//get values
+				//	if this is true ? do this : this otherwise false nice :D yeah. skipping a lot of ifs i al
 		name()	return name ? name : 0
 		value() return value ? value : 0
-		limit() return limit ? limit : 0
+		limit() return limit ? limit : 0 // this is so nice :O
 		xp() 	return xp ? xp : 0
 		xp_next() return xp_next ? xp_next : 0
 		limit_gain_rate() 	return limit_gain_rate ? limit_gain_rate : 0
@@ -100,24 +118,3 @@ attribute
 			catch(var/exception/e)
 				world.log << "[e] on [e.file]:[e.line]"
 
-mob
-	var
-		list/stats = list()	//initialize it as empty list, instead of null
-
-	proc
-
-		/*
-			I will create a list of variables that is related to stats, then add them later on
-		*/
-		stats_init()
-			stats = list(\
-			"stat" = new/attribute(),
-			"stat2" = new/attribute(),
-			)//continuing on later
-
-
-		//need to refer mob/give_xp() to something else then attribute/gain_xp()
-		give_xp(attribute, amount)	//calls attribute.gain_xp()
-			if(stats[attribute]) stats[attribute].gain_xp(amount)
-			else
-				throw EXCEPTION("[src.name].give_xp() : could not find [attribute] in [src.name]/var/list/stats \n file: Attributes.dm, Line 125")
